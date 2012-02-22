@@ -12,13 +12,13 @@
         padding-bottom: 40px;
       }
     </style>
-    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="http://twitter.github.com/bootstrap/examples/images/favicon.ico">
-    <link rel="apple-touch-icon" href="http://twitter.github.com/bootstrap/examples/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="http://twitter.github.com/bootstrap/examples/images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="http://twitter.github.com/bootstrap/examples/images/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   </head>
 
   <body>
@@ -208,66 +208,9 @@
     <script src="./javascript/bootstrap/bootstrap-button.js"></script>
     <script src="./javascript/bootstrap/bootstrap-collapse.js"></script>
 
+    <script src="./javascript/validations/validateRegForm.js"></script>
+    
     <script>
-    	$('#username').keyup(function() {
-    		var username = $(this);
-    		var errorMsg = username.next();
-    		var controlGroup = username.parent().parent();
-		  	if(username.val().length < 4){
-		  		controlGroup.addClass('error').removeClass('success');
-		  		errorMsg.text("Username too short.");
-		  		errorMsg.show();
-		  	} else {
-		  		controlGroup.removeClass('error').addClass('success');
-		  		errorMsg.hide();
-		  	}
-		});
-
-		$('#password').keyup(function() {
-    		var password = $(this);
-    		var errorMsg = password.next();
-    		var controlGroup = password.parent().parent();
-		  	if(password.val().length < 4){
-		  		controlGroup.addClass('error').removeClass('success').removeClass('warning');
-		  		errorMsg.text("Password too short!");
-		  		errorMsg.show();
-		  	} else if(password.val().length < 8){
-		  		controlGroup.addClass('warning').removeClass('error').removeClass('success');
-		  		errorMsg.text("Password weak.");
-		  		errorMsg.show();
-		  	} else {
-		  		controlGroup.addClass('success').removeClass('error').removeClass('warning');
-		  		errorMsg.hide();
-		  	}
-		});
-
-		$('#passwordRepeat').keyup(function() {
-    		var passwordRep = $(this);
-    		var password = $('#password');
-    		var errorMsg = passwordRep.next();
-    		var controlGroup = passwordRep.parent().parent();
-		  	if(passwordRep.val() == password.val()){
-		  		controlGroup.removeClass('error').addClass('success');
-		  		errorMsg.hide();
-		  	} else {
-		  		controlGroup.addClass('error').removeClass('success');
-		  		errorMsg.text("Passwords do not match!");
-		  		errorMsg.show();
-		  	}
-		});
-
-		$('#email').keyup(function() {
-    		var email = $(this);
-    		var errorMsg = email.next();
-    		var controlGroup = email.parent().parent();
-		  	if(email.val().indexOf("@") == -1){
-		  		controlGroup.addClass('error').removeClass('success');
-		  		errorMsg.text("Email should contain @ sign.");
-		  		errorMsg.show();
-		  	} else {
-		  		controlGroup.removeClass('error').addClass('success');
-		  		errorMsg.hide();
-		  	}
-		});
+    
     </script>
 </body></html>
