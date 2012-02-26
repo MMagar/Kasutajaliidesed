@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>TODO manager</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+		body {
+			padding-top: 60px;
+			padding-bottom: 40px;
+		}
+    </style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="css/tasks.css" rel="stylesheet">
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://twitter.github.com/bootstrap/examples/images/favicon.ico">
+    <link rel="apple-touch-icon" href="http://twitter.github.com/bootstrap/examples/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://twitter.github.com/bootstrap/examples/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://twitter.github.com/bootstrap/examples/images/apple-touch-icon-114x114.png">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="index.html#">TODO manager</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="index.html#">Home</a></li>
+              <li><a href="index.html#about">About</a></li>
+              <li class="active"><a href="tasklist.html">Task list</a></li>
+            </ul>
+			<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="width:900px;">	
+	  <div class="row">
+		<div class="span3">
+			<h3>Backlog <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a></h3>
+		</div>
+
+		<div class="span3">
+			<h3>Doing <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a></h3>
+			<div class="taskList">
+			</div>
+		</div>
+
+		<div class="span3">
+			<h3>Finished <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a></h3>
+		</div>
+      </div> <!-- /row -->
+
+      <hr>
+
+      <footer>
+        <p>© Company 2012</p>
+      </footer>
+
+    </div> <!-- /container -->
+	
+	
+	<div id="newTaskModal" class="modal hide fade" style="display: none;">
+		<div class="modal-header">
+		  <a class="close" data-dismiss="modal">×</a>
+		  <h3>New Task</h3>
+		</div>
+		<div class="modal-body">
+			<form class="form-horizontal">
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label" for="title">Title</label>
+						<div class="controls">
+						  <input class="input-medium focused" id="title" type="text">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="kiire">Kiire</label>
+						<div class="controls">
+						  <select id="kiire" class="input-medium">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						  </select>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="oluline">Oluline</label>
+						<div class="controls">
+						  <select id="oluline" class="input-medium">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						  </select>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="deadline">Deadline</label>
+						<div class="controls">
+						  <input class="input-medium" id="deadline" type="text">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="description">Description</label>
+						<div class="controls">
+						  <textarea class="input-medium" id="description" rows="2"></textarea>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="status">Status</label>
+						<div class="controls">
+						  <select id="status" class="input-medium">
+							<option>Un-Started</option>
+							<option>In production</option>
+							<option>Waiting</option>
+							<option>Done</option>
+							<option>Canceled</option>
+						  </select>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		 </div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close <i class="icon-remove-sign"></i></a>
+			<a href="#" class="btn btn-success">Save task <i class="icon-ok-circle"></i></a>
+		</div>
+	</div><!-- /new task Modal -->
+	
+    <!-- javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./javascript/jquery.js"></script>
+    <script src="./javascript/bootstrap/bootstrap-transition.js"></script>
+    <script src="./javascript/bootstrap/bootstrap-alert.js"></script>
+    <script src="./javascript/bootstrap/bootstrap-modal.js"></script>
+    <script src="./javascript/bootstrap/bootstrap-button.js"></script>
+	<script src="./javascript/handlebars/handlebars-1.0.0.beta.6.js"></script>
+
+	<!-- taskItem template. May be loaded using ajax -->
+	<script id="taskItem-template" type="text/x-handlebars-template">
+	{{#each taskItems}}
+		<div class="taskItem">
+			<div class="taskHeader">
+				<i class="icon-chevron-up" style="display: none;"></i>
+				<i class="icon-chevron-down"></i>{{header}}
+			</div>
+			<div class="taskBody">
+				<table class="table table-condensed" style="margin-bottom: 0px;">
+				  <tbody>
+					<tr>
+					  <td>Urgency:</td>
+					  <td>{{urgency}}</td>
+					</tr>
+					<tr>
+					  <td>Importance:</td>
+					  <td>{{importance}}</td>
+					</tr>
+					<tr>
+					  <td>Deadline:</td>
+					  <td>{{deadline}}</td>
+					</tr>
+					<tr>
+					  <td>Description:</td>
+					  <td>{{description}}</td>
+					</tr>
+					<tr>
+					  <td>Status:</td>
+					  <td>{{status}}</td>
+					</tr>
+				  </tbody>
+				</table>
+			</div>
+		</div>
+	{{/each}}
+	</script>
+
+	<!-- generate the task items based on the data and the template -->
+	<script>
+		var taskItemSource = $("#taskItem-template").html();
+		var taskItemTemplate = Handlebars.compile(taskItemSource);
+
+		var data = {"taskItems":[
+					{"header": "Clean the room",
+					"urgency": "2",
+					"importance": "3",
+					"deadline": "20:00 2012/08/24",
+					"description": "Mingi pikem tekst. Mingi pikem tekst. Mingi pikem tekst.Mingi pikem tekst.",
+					"status": "started"},
+					
+					{"header": "Fix the car",
+					"urgency": "4",
+					"importance": "2",
+					"deadline": "14:00 2020/08/14",
+					"description": "Auto ikka katki",
+					"status": "started"}]	
+				};
+		var result = taskItemTemplate(data);
+		$('.taskList').append(result);
+	</script>
+	
+	<script>
+		$('.taskHeader').on("click", function(event){
+			$(this).children('i').toggle();
+			$(this).next().slideToggle();
+		});
+	</script>
+</body></html>
