@@ -5,14 +5,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
+		body {
+			padding-top: 60px;
+			padding-bottom: 40px;
+		}
     </style>
-    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="css/tasks.css" rel="stylesheet">
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="http://twitter.github.com/bootstrap/examples/images/favicon.ico">
@@ -92,14 +93,44 @@
 		<div class="span3">
 			<h3>Doing <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a></h3>
 			<div class="taskList">
-				<div class="taskItem" style="border: 1px solid #E5E5E5;
--webkit-border-radius: 4px;
-border-radius: 4px;">
-					<div class="taskHeader" style="padding:0.2em;">
+				<div class="taskItem">
+					<div class="taskHeader">
 						<i class="icon-chevron-up" style="display: none;"></i>
 						<i class="icon-chevron-down"></i>Header
 					</div>
-					<div class="taskBody" style="display: none;">
+					<div class="taskBody">
+						<table class="table table-condensed">
+						  <tbody>
+						    <tr>
+						      <td>Kiire:</td>
+						      <td>1</td>
+						    </tr>
+						    <tr>
+						      <td>Oluline:</td>
+						      <td>2</td>
+						    </tr>
+						    <tr>
+						      <td>Deadline:</td>
+						      <td>30.12.2012 14:20</td>
+						    </tr>
+						    <tr>
+						      <td>Description:</td>
+						      <td>Mingi pikem tekst. Mingi pikem tekst. Mingi pikem tekst. Mingi pikem tekst. Mingi pikem tekst. Mingi pikem tekst. </td>
+						    </tr>
+						    <tr>
+						      <td>Status:</td>
+						      <td>Started </td>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+				</div>
+				<div class="taskItem">
+					<div class="taskHeader">
+						<i class="icon-chevron-up" style="display: none;"></i>
+						<i class="icon-chevron-down"></i>Header
+					</div>
+					<div class="taskBody">
 						<table class="table table-condensed">
 						  <tbody>
 						    <tr>
@@ -266,10 +297,10 @@ border-radius: 4px;">
     <script src="./javascript/bootstrap/bootstrap-collapse.js"></script>
 
   
-<script>
-    		$('.taskHeader').on("click", function(event){
-    			$(this).children('i').toggle();
-    			$(this).next().slideToggle();
-    		});
-    	</script>
+	<script>
+		$('.taskHeader').on("click", function(event){
+			$(this).children('i').toggle();
+			$(this).next().slideToggle();
+		});
+	</script>
 </body></html>
