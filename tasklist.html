@@ -46,162 +46,19 @@
     </div>
 
     <div class="container" style="width:900px;">	
-		<div class="row">
-
+	  <div class="row">
 		<div class="span3">
 			<h3>Backlog <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a></h3>
-			<div class="accordion" id="accordion1">
-	            <div class="accordion-group">
-	              <div class="accordion-heading">
-	                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
-	                  Task Item #1
-	                </a>
-	              </div>
-	              <div id="collapseOne" class="accordion-body collapse" style="height: 0px; ">
-	                <div class="accordion-inner">
-	                Sisu
-					</div>
-	              </div>
-	            </div>
-	            <div class="accordion-group">
-	              <div class="accordion-heading">
-	                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo">
-	                  Task Item #2
-	                </a>
-	              </div>
-	              <div id="collapseTwo" class="accordion-body collapse">
-	                <div class="accordion-inner">
-						Sisu
-					</div>
-	              </div>
-	            </div>
-	            <div class="accordion-group">
-	              <div class="accordion-heading">
-	                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree">
-	                  Task Item #3
-	                </a>
-	              </div>
-	              <div id="collapseThree" class="accordion-body collapse">
-	                <div class="accordion-inner">
-						sisu
-					</div>
-	              </div>
-	            </div>
-	        </div>
 		</div>
 
 		<div class="span3">
 			<h3>Doing <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a></h3>
 			<div class="taskList">
-				<div class="taskItem">
-					<div class="taskHeader">
-						<i class="icon-chevron-up" style="display: none;"></i>
-						<i class="icon-chevron-down"></i>Header
-					</div>
-					<div class="taskBody">
-						<table class="table table-condensed">
-						  <tbody>
-						    <tr>
-						      <td>Kiire:</td>
-						      <td>1</td>
-						    </tr>
-						    <tr>
-						      <td>Oluline:</td>
-						      <td>2</td>
-						    </tr>
-						    <tr>
-						      <td>Deadline:</td>
-						      <td>30.12.2012 14:20</td>
-						    </tr>
-						    <tr>
-						      <td>Description:</td>
-						      <td>Mingi pikem tekst. Mingi pikem tekst. Mingi pikem tekst. Mingi pikem tekst. Mingi pikem tekst. Mingi pikem tekst. </td>
-						    </tr>
-						    <tr>
-						      <td>Status:</td>
-						      <td>Started </td>
-						    </tr>
-						  </tbody>
-						</table>
-					</div>
-				</div>
-				<div class="taskItem">
-					<div class="taskHeader">
-						<i class="icon-chevron-up" style="display: none;"></i>
-						<i class="icon-chevron-down"></i>Header
-					</div>
-					<div class="taskBody">
-						<table class="table table-condensed">
-						  <tbody>
-						    <tr>
-						      <td>Kiire:</td>
-						      <td>1</td>
-						    </tr>
-						    <tr>
-						      <td>Oluline:</td>
-						      <td>2</td>
-						    </tr>
-						    <tr>
-						      <td>Deadline:</td>
-						      <td>30.12.2012 14:20</td>
-						    </tr>
-						    <tr>
-						      <td>Description:</td>
-						      <td>Mingi pikem tekst. Mingi pikem tekst. Mingi pikem tekst. Mingi pikem tekst. Mingi pikem tekst. Mingi pikem tekst. </td>
-						    </tr>
-						    <tr>
-						      <td>Status:</td>
-						      <td>Started </td>
-						    </tr>
-						  </tbody>
-						</table>
-					</div>
-				</div>
 			</div>
 		</div>
 
-		
-
 		<div class="span3">
 			<h3>Finished <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a></h3>
-			<div class="accordion" id="accordion3">
-	            <div class="accordion-group">
-	              <div class="accordion-heading">
-	                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapseOne">
-	                  Task Item #1
-	                </a>
-	              </div>
-	              <div id="collapseOne" class="accordion-body collapse" style="height: 0px; ">
-	                <div class="accordion-inner">
-	                Sisu
-					</div>
-	              </div>
-	            </div>
-	            <div class="accordion-group">
-	              <div class="accordion-heading">
-	                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo">
-	                  Task Item #2
-	                </a>
-	              </div>
-	              <div id="collapseTwo" class="accordion-body collapse">
-	                <div class="accordion-inner">
-						Sisu
-					</div>
-	              </div>
-	            </div>
-	            <div class="accordion-group">
-	              <div class="accordion-heading">
-	                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree">
-	                  Task Item #3
-	                </a>
-	              </div>
-	              <div id="collapseThree" class="accordion-body collapse">
-	                <div class="accordion-inner">
-						sisu
-					</div>
-	              </div>
-	            </div>
-	        </div>
 		</div>
       </div> <!-- /row -->
 
@@ -292,11 +149,71 @@
     <script src="./javascript/bootstrap/bootstrap-transition.js"></script>
     <script src="./javascript/bootstrap/bootstrap-alert.js"></script>
     <script src="./javascript/bootstrap/bootstrap-modal.js"></script>
-    <script src="./javascript/bootstrap/bootstrap-tab.js"></script>
     <script src="./javascript/bootstrap/bootstrap-button.js"></script>
-    <script src="./javascript/bootstrap/bootstrap-collapse.js"></script>
+	<script src="./javascript/handlebars/handlebars-1.0.0.beta.6.js"></script>
 
-  
+	<!-- taskItem template. May be loaded using ajax -->
+	<script id="taskItem-template" type="text/x-handlebars-template">
+	{{#each taskItems}}
+		<div class="taskItem">
+			<div class="taskHeader">
+				<i class="icon-chevron-up" style="display: none;"></i>
+				<i class="icon-chevron-down"></i>{{header}}
+			</div>
+			<div class="taskBody">
+				<table class="table table-condensed" style="margin-bottom: 0px;">
+				  <tbody>
+					<tr>
+					  <td>Urgency:</td>
+					  <td>{{urgency}}</td>
+					</tr>
+					<tr>
+					  <td>Importance:</td>
+					  <td>{{importance}}</td>
+					</tr>
+					<tr>
+					  <td>Deadline:</td>
+					  <td>{{deadline}}</td>
+					</tr>
+					<tr>
+					  <td>Description:</td>
+					  <td>{{description}}</td>
+					</tr>
+					<tr>
+					  <td>Status:</td>
+					  <td>{{status}}</td>
+					</tr>
+				  </tbody>
+				</table>
+			</div>
+		</div>
+	{{/each}}
+	</script>
+
+	<!-- generate the task items based on the data and the template -->
+	<script>
+		var taskItemSource = $("#taskItem-template").html();
+		var taskItemTemplate = Handlebars.compile(taskItemSource);
+
+		var data = {"taskItems":[
+					{"header": "Clean the room",
+					"urgency": "2",
+					"importance": "3",
+					"deadline": "20:00 2012/08/24",
+					"description": "Mingi pikem tekst. Mingi pikem tekst. Mingi pikem tekst.Mingi pikem tekst.",
+					"status": "started"},
+					
+					{"header": "Fix the car",
+					"urgency": "4",
+					"importance": "2",
+					"deadline": "14:00 2020/08/14",
+					"description": "Auto ikka katki",
+					"status": "started"}]	
+				};
+		var result = taskItemTemplate(data);
+		$('.taskList').append(result);
+	</script>
+	
 	<script>
 		$('.taskHeader').on("click", function(event){
 			$(this).children('i').toggle();
