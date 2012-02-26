@@ -8,8 +8,6 @@ The first part will focus on HTML, CSS and Javascript.
 The second part will cover simple server - browser data exchange, storage and modification with JSON and python.
 
 List of frameworks/scripts used:
-1. [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
-HTML, CSS and Javascript components for userinterface.
 
-2. [Handelbars](http://handlebarsjs.com/)
-Use templates to generate html content.
+1.  [Twitter Bootstrap](http://twitter.github.com/bootstrap/) HTML, CSS and Javascript components for userinterface.
+2.  [Handelbars](http://handlebarsjs.com/) Moustache template js integration to generate html content.
