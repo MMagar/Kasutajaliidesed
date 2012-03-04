@@ -4,10 +4,16 @@
 @schemaLight: #A798D5;
 @schemaBright: #B2A7D5;
 
+.rounded-corners (@radius: 4px) {
+	-moz-border-radius: @radius;
+	-webkit-border-radius: @radius;
+	border-radius: @radius;
+}
+
 .rounded-corners (@radiusTopLeft: 4px, @radiusTopRight: 4px, @radiusBottomRight: 4px, @radiusBottomLeft: 4px) {
-	-moz-border-radius: @radiusTopLeft @radiusTopRight @radiusBottomRight @radiusBottomLeft;
-	-webkit-border-radius: @radiusTopLeft @radiusTopRight @radiusBottomRight @radiusBottomLeft;
-	border-radius: @radiusTopLeft @radiusTopRight @radiusBottomRight @radiusBottomLeft;
+	-moz-border-radius: @arguments;
+	-webkit-border-radius: @arguments;
+	border-radius: @arguments;
 }
 
 .border (@thickness: 1px) {
