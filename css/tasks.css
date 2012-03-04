@@ -1,22 +1,35 @@
 .taskList {
-}
-
-.taskItem {
-	margin:0.2em;
+	margin: 0.2em;
 	border: 1px solid #B0B0B0;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
+	background-color: pink; 
+}
+
+.taskListHeader {
+	border-bottom: 1px solid #B0B0B0;
+	-webkit-border-radius: 4px 4px 0px 0px;
+	border-radius: 4px 4px 0px 0px;
+	background-color: #FFFFFF;
+}
+
+.taskItem {
+	margin: 0.2em;
+	border: 1px solid #B0B0B0;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	background-color: #FFFFFF;
 }
 
 .taskHeader {
-	font-size:1em;
-	font-weight:bold;
-	padding:0.2em;
+	font-size: 1em;
+	font-weight: bold;
+	padding: 0.2em;
 }
 
 .taskHeader:hover{ 
-	background-color:#B0B0B0;
-	cursor:pointer;
+	background-color: #B0B0B0;
+	cursor: pointer;
 }
 
 .taskBody {
