@@ -4,26 +4,33 @@
 @schemaLight: #795FCF;
 @schemaBright: #8F7ACF;
 
+.rounded-corners (@radius: 4px) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+.border (@thickness: 1px) {
+	border: @thickness solid @schemaDark;
+}
+
 .taskList {
 	margin: 0.2em;
-	border: 1px solid @schemaDark;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
-	background-color: #1A0855; 
+	.border;
+	.rounded-corners;
+	background-color: @schemaGray:; 
 }
 
 .taskListHeader {
 	border-bottom: 1px solid @schemaDark;
-	-webkit-border-radius: 4px 4px 0px 0px;
-	border-radius: 4px 4px 0px 0px;
+	.rounded-corners;
 	background-color: #FFFFFF;
 }
 
 .taskItem {
 	margin: 0.2em;
-	border: 1px solid @schemaDark;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
+	.border;
+	.rounded-corners;
 	background-color: #FFFFFF;
 }
 
