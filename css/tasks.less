@@ -1,13 +1,13 @@
-@schemaPrimary: #4B30A4;
-@schemaDark: #453A6B;
-@schemaGray: #1A0855;
-@schemaLight: #795FCF;
-@schemaBright: #8F7ACF;
+@schemaPrimary: #7E6EAF;
+@schemaDark: #23115A;
+@schemaGray: #5D5773;
+@schemaLight: #A798D5;
+@schemaBright: #B2A7D5;
 
-.rounded-corners (@radius: 4px) {
-  border-radius: @radius;
-  -webkit-border-radius: @radius;
-  -moz-border-radius: @radius;
+.rounded-corners (@radiusTopLeft: 4px, @radiusTopRight: 4px, @radiusBottomRight: 4px, @radiusBottomLeft: 4px) {
+  border-radius: @radiusTopLeft @radiusTopRight @radiusBottomRight @radiusBottomLeft;
+  -webkit-border-radius: @radiusTopLeft @radiusTopRight @radiusBottomRight @radiusBottomLeft;
+  -moz-border-radius: @radiusTopLeft @radiusTopRight @radiusBottomRight @radiusBottomLeft;
 }
 
 .border (@thickness: 1px) {
@@ -23,7 +23,7 @@
 
 .taskListHeader {
 	border-bottom: 1px solid @schemaDark;
-	.rounded-corners;
+	.rounded-corners(4px, 4px, 0px, 0px);
 	background-color: @schemaBright;
 	font-size: 1.5em;
 	font-weight: bold;
