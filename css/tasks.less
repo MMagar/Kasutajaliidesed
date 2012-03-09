@@ -4,20 +4,32 @@
 @schemaLight: #A798D5;
 @schemaBright: #B2A7D5;
 
+.rounded-corners (@radius: 4px) {
+	border-radius: @radius;
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+}
+
+.rounded-corners (@radiusTopLeft: 4px, @radiusTopRight: 4px, @radiusBottomRight: 4px, @radiusBottomLeft: 4px) {
+	border-radius: @arguments;
+	-webkit-border-radius: @arguments;
+	-moz-border-radius: @arguments;
+}
+
+.border (@thickness: 1px) {
+	border: @thickness solid @schemaDark;
+}
+
 .taskList {
 	margin: 0.2em;
-	border: 1px solid @schemaDark;
-	border-radius: 4px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
+	.border;
+	.rounded-corners;
 	background-color: @schemaGray; 
 }
 
 .taskListHeader {
-	border-bottom: 1px solid #23115A;
-	border-radius: 4px 4px 0px 0px;
-	-webkit-border-radius: 4px 4px 0px 0px;
-	-moz-border-radius: 4px 4px 0px 0px;
+	border-bottom: 1px solid @schemaDark;
+	.rounded-corners(4px, 4px, 0px, 0px);
 	background-color: @schemaBright;
 	font-size: 1.5em;
 	font-weight: bold;
@@ -26,21 +38,20 @@
 
 .taskItem {
 	margin: 0.2em;
-	border: 1px solid #23115A;
-	border-radius: 4px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
+	.border;
+	.rounded-corners;
 	background-color: @schemaBright;
 }
 
 .taskHeader {
+	.border;
 	font-size: 1em;
 	font-weight: bold;
 	padding: 0.2em;
 }
 
 .taskHeader:hover{ 
-	background-color: #A798D5;
+	background-color: @schemaLight;
 	cursor: pointer;
 }
 
