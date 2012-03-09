@@ -197,11 +197,18 @@
 	</script>
 
 	<!-- generate the task items based on the data and the template -->
-	<script>
+	<script type="text/javascript">
+var TaskLister = {
+	init: function (config) {
+		this.config = config;
 		var taskItemSource = $("#taskItem-template").html();
-		var taskItemTemplate = Handlebars.compile(taskItemSource);
+		this.taskItemTemplate = Handlebars.compile(taskItemSource); 
+		this.fetchAllTasks();
+		this.drawAllTasks();
+	},
 
-		var data = {"taskItems":[
+	fetchAllTasks: function(){
+		this.tasksData = {"taskItems":[
 					{"header": "Clean the room",
 					"urgency": "2",
 					"importance": "3",
@@ -216,8 +223,16 @@
 					"description": "Auto ikka katki",
 					"status": "started"}]	
 				};
-		var result = taskItemTemplate(data);
+	},
+
+	drawAllTasks: function() {
+		var tasksHTML = taskItemTemplate(tasksData);
 		$('.taskList').append(result);
+	}
+};
+
+TaskLister.init();
+
 	</script>
 	
 	<script>
@@ -225,5 +240,6 @@
 			$(this).children('i').toggle();
 			$(this).next().slideToggle();
 		});
+
 	</script>
 </body></html>
