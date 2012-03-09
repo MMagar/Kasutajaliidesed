@@ -1,16 +1,10 @@
-@schemaPrimary: #7E6EAF;
-@schemaDark: #23115A;
-@schemaGray: #5D5773;
-@schemaLight: #A798D5;
-@schemaBright: #B2A7D5;
-
 .taskList {
 	margin: 0.2em;
-	border: 1px solid @schemaDark;
+	border: 1px solid #23115A;
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
-	background-color: @schemaGray; 
+	background-color: #5D5773; 
 }
 
 .taskListHeader {
@@ -18,7 +12,7 @@
 	border-radius: 4px 4px 0px 0px;
 	-webkit-border-radius: 4px 4px 0px 0px;
 	-moz-border-radius: 4px 4px 0px 0px;
-	background-color: @schemaBright;
+	background-color: #B2A7D5;
 	font-size: 1.5em;
 	font-weight: bold;
 	padding: 0.2em;
@@ -30,7 +24,7 @@
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
-	background-color: @schemaBright;
+	background-color: #B2A7D5;
 }
 
 .taskHeader {
