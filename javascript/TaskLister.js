@@ -31,7 +31,8 @@ var TaskLister = {
 	},
 
 	drawAllTasks: function() {
-		var tasksHTML = taskItemTemplate(this.tasksData);
+		var self = TaskLister;
+		var tasksHTML = taskItemTemplate(slef.tasksData);
 		$('.taskList').append(result);
 	}
 };
