@@ -3,10 +3,9 @@ var TaskLister = {
 	init: function (config) {
 		var defaults = { 
 		}; 
-
 		config = $.extend({}, defaults, config); 
 		this.config = config;
-		this.tasksData = {};
+
 		var taskItemSource = $("#taskItem-template").html();
 		this.taskItemTemplate = Handlebars.compile(taskItemSource); 
 		this.fetchAllTasks();
@@ -32,7 +31,7 @@ var TaskLister = {
 	},
 
 	drawAllTasks: function() {
-		var tasksHTML = taskItemTemplate(tasksData);
+		var tasksHTML = taskItemTemplate(this.tasksData);
 		$('.taskList').append(result);
 	}
 };
