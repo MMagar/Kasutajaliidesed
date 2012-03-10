@@ -6,7 +6,7 @@ var TaskLister = {
 
 		config = $.extend({}, defaults, config); 
 		this.config = config;
-		thid.tasksData = {};
+		this.tasksData = {};
 		var taskItemSource = $("#taskItem-template").html();
 		this.taskItemTemplate = Handlebars.compile(taskItemSource); 
 		this.fetchAllTasks();
