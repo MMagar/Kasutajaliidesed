@@ -1,7 +1,7 @@
 var TaskLister = {
 
 	init: function (config) {
-		var defaults = { 
+		var defaults = {
 		}; 
 		config = $.extend({}, defaults, config); 
 		this.config = config;
@@ -9,38 +9,43 @@ var TaskLister = {
 		var taskItemSource = $("#taskItem-template").html();
 		this.taskItemTemplate = Handlebars.compile(taskItemSource); 
 		this.fetchAllTasks();
-		this.drawAllTasks();
 	},
 
-	fetchAllTasks: function(){
-		this.tasksData = {"taskItems":[
-					{"header": "Clean the room",
+	fetchTaskIDs: function(){
+		TaskLister.idList = [1,2];
+	},
+
+	fetchTask: function(id) {
+		if(id == 1){
+			return {"id": "1",
+					"header": "Clean the room",
 					"urgency": "2",
 					"importance": "3",
 					"deadline": "20:00 2012/08/24",
 					"description": "Mingi pikem tekst. Mingi pikem tekst. Mingi pikem tekst.Mingi pikem tekst.",
-					"status": "started"},
-					
-					{"header": "Fix the car",
+					"status": "backlog"}
+		} else {
+			return {"id": "2",
+					"header": "Fix the car",
 					"urgency": "4",
 					"importance": "2",
 					"deadline": "14:00 2020/08/14",
 					"description": "Auto ikka katki",
-					"status": "started"}]	
-				};
+					"status": "testing"}
+		}
 	},
 
-	drawAllTasks: function() {
+	fetchAllTasks: function(){
 		var self = TaskLister;
-		$.each(self.tasksData.taskItems, function(index, taskData){
-			console.log(taskData);
-			self.drawTask(taskData);
+		self.fetchTaskIDs();
+		$.each(self.idList, function(index, id){
+			self.drawTask(self.fetchTask(id));
 		});
 	},
 
 	drawTask: function(taskData) {
 		var self = TaskLister;
 		var taskHTML = self.taskItemTemplate(taskData);
-		$('.taskList').append(taskHTML);
+		$("#" + taskData.status).append(taskHTML);
 	}
 };
