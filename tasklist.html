@@ -229,7 +229,7 @@
 	</script>
 	
 	<script>
-		$('.taskHeader').on("click", function(event){
+		$('.taskHeader').live("click", function(event){
 			$(this).children('i').toggle();
 			$(this).next().slideToggle();
 		});
