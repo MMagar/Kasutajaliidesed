@@ -17,6 +17,17 @@ var TaskLister = {
 	},
 
 	fetchTask: function(id) {
+		var dfd = $.Deferred();
+		$.ajax({
+			url: 'JSONsamples/tasks/' + id + '.json',
+			dataType: 'jsonp',
+			success: dfd.resolve,
+			error: dfd.reject
+		});
+		return dfd.promise();
+	},
+
+	fetchTaskDummy: function (id) {
 		if(id == 1) {
 			return {"id": "1",
 					"header": "Clean the room",
@@ -81,7 +92,11 @@ var TaskLister = {
 		var bar = self.notification.children(".progress").children(".bar");
 		$.each(self.idList, function(index, id){
 			bar.text("Loading tasks " + id + "/" + numberOfTasks);
-			self.drawTask(self.fetchTask(id));
+			self.fetchTask(id).then(function (taskData){
+				self.drawTask(taskData);
+			}).fail(function(){
+				self.drawTask(self.fetchTaskDummy(id));
+			});
 			bar.css('width', function(){
 				return (index+1)*100 / numberOfTasks + "%";
 			});
