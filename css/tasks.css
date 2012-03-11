@@ -1,43 +1,54 @@
+
 .taskList {
-	margin: 0.2em;
-	border: 1px solid #23115A;
+	height: 600px;
+	border: 1px solid #343838;
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
-	background-color: #5D5773; 
+	background-color: #005F6B;
+	background: -webkit-gradient(linear,
+                               left bottom,
+                               left top,
+                               color-stop(0, #005F6B),
+                               color-stop(1, #008C9E));
+	background: -ms-linear-gradient(bottom,
+	                              #005F6B,
+	                              #008C9E);
+	background: -moz-linear-gradient(center bottom,
+	                               #005F6B 0%,
+	                               #008C9E 100%);
+
+	-webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .taskListHeader {
-	border-bottom: 1px solid #23115A;
+	border-bottom: 1px solid #343838;
 	border-radius: 4px 4px 0px 0px;
 	-webkit-border-radius: 4px 4px 0px 0px;
 	-moz-border-radius: 4px 4px 0px 0px;
-	background-color: #B2A7D5;
+	background-color: #343838;
 	font-size: 1.5em;
 	font-weight: bold;
+	color: #FFFFFF;
 	padding: 0.2em;
 }
 
 .taskItem {
-	margin: 0.2em;
-	border: 1px solid #23115A;
-	border-radius: 4px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	background-color: #B2A7D5;
+	border-top: 1px solid #00DFFC;
+	border-bottom: 1px solid #005F6B;
+	background-color: #00B4CC;
 }
 
 .taskHeader {
-	border-radius: 4px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
 	font-size: 1em;
 	font-weight: bold;
 	padding: 0.2em;
 }
 
 .taskHeader:hover{ 
-	background-color: #A798D5;
+	background-color: #00DFFC;
 	cursor: pointer;
 }
 

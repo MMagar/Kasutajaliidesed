@@ -44,19 +44,16 @@
           </div><!--/.nav-collapse -->
         </div>
       </div>
-    </div>
+    </div><!--/.navbar -->
 
-    <div class="container" style="width:900px;">	
-	  <div class="row">
+    <div class="container-fluid" >	
+	  <div class="row-fluid">
+	   <div class="span12">
+	   <div class="row-fluid" >
 		<div class="span3">
-			<h3>Backlog <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a></h3>
-		</div>
-
-		<div class="span3">
-			
 			<div class="taskList">
 				<div class="taskListHeader">
-					Doing <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a>
+					Backlog <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a>
 				</div>
 				<div class="taskListBody">
 				</div>
@@ -64,8 +61,35 @@
 		</div>
 
 		<div class="span3">
-			<h3>Finished <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a></h3>
+			<div class="taskList">
+				<div class="taskListHeader">
+					Development <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a>
+				</div>
+				<div class="taskListBody">
+				</div>
+			</div>
 		</div>
+
+		<div class="span3">
+			<div class="taskList">
+				<div class="taskListHeader">
+					Testing <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a>
+				</div>
+				<div class="taskListBody">
+				</div>
+			</div>
+		</div>
+		<div class="span3">
+			<div class="taskList">
+				<div class="taskListHeader">
+					Done <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a>
+				</div>
+				<div class="taskListBody">
+				</div>
+			</div>
+		</div>
+	   </div>
+	   </div>
       </div> <!-- /row -->
 
       <hr>
@@ -161,7 +185,6 @@
 
 	<!-- taskItem template. May be loaded using ajax -->
 	<script id="taskItem-template" type="text/x-handlebars-template">
-	{{#each taskItems}}
 		<div class="taskItem">
 			<div class="taskHeader">
 				<i class="icon-chevron-up" style="display: none;"></i>
@@ -194,7 +217,6 @@
 				</table>
 			</div>
 		</div>
-	{{/each}}
 	</script>
 <script src="./javascript/TaskLister.js"></script>
 	<!-- generate the task items based on the data and the template -->

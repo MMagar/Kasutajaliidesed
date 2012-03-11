@@ -1,8 +1,8 @@
-@schemaPrimary: #7E6EAF;
-@schemaDark: #23115A;
-@schemaGray: #5D5773;
-@schemaLight: #A798D5;
-@schemaBright: #B2A7D5;
+@schemaBorder: #343838;
+@schemaBackground: #005F6B;
+@schemaDark: #008C9E;
+@schemaLight: #00B4CC;
+@schemaHighlight: #00DFFC;
 
 .rounded-corners (@radius: 4px) {
 	border-radius: @radius;
@@ -17,41 +17,61 @@
 }
 
 .border (@thickness: 1px) {
-	border: @thickness solid @schemaDark;
+	border: @thickness solid @schemaBorder;
+}
+
+.gradient(@color: @schemaBackground, @start: @schemaBackground, @stop: @schemaDark) {
+  background: @color;
+  background: -webkit-gradient(linear,
+                               left bottom,
+                               left top,
+                               color-stop(0, @start),
+                               color-stop(1, @stop));
+  background: -ms-linear-gradient(bottom,
+                                  @start,
+                                  @stop);
+  background: -moz-linear-gradient(center bottom,
+                                   @start 0%,
+                                   @stop 100%);
+}
+.drop-shadow(@x-axis: 1px, @y-axis: 1px, @blur: 5px, @alpha: 0.5) {
+  -webkit-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+  -moz-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+  box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
 }
 
 .taskList {
-	margin: 0.2em;
+	height: 600px;
 	.border;
 	.rounded-corners;
-	background-color: @schemaGray; 
+	.gradient;
+	.drop-shadow(;
 }
 
 .taskListHeader {
-	border-bottom: 1px solid @schemaDark;
+	border-bottom: 1px solid @schemaBorder;
 	.rounded-corners(4px, 4px, 0px, 0px);
-	background-color: @schemaBright;
+	background-color: @schemaBorder;
 	font-size: 1.5em;
 	font-weight: bold;
+	color: #FFFFFF;
 	padding: 0.2em;
 }
 
 .taskItem {
-	margin: 0.2em;
-	.border;
-	.rounded-corners;
-	background-color: @schemaBright;
+	border-top: 1px solid @schemaHighlight;
+	border-bottom: 1px solid @schemaBackground;
+	background-color: @schemaLight;
 }
 
 .taskHeader {
-	.rounded-corners;
 	font-size: 1em;
 	font-weight: bold;
 	padding: 0.2em;
 }
 
 .taskHeader:hover{ 
-	background-color: @schemaLight;
+	background-color: @schemaHighlight;
 	cursor: pointer;
 }
 

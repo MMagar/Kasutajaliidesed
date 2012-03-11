@@ -32,7 +32,15 @@ var TaskLister = {
 
 	drawAllTasks: function() {
 		var self = TaskLister;
-		var tasksHTML = self.taskItemTemplate(self.tasksData);
-		$('.taskList').append(tasksHTML);
+		$.each(self.tasksData.taskItems, function(index, taskData){
+			console.log(taskData);
+			self.drawTask(taskData);
+		});
+	},
+
+	drawTask: function(taskData) {
+		var self = TaskLister;
+		var taskHTML = self.taskItemTemplate(taskData);
+		$('.taskList').append(taskHTML);
 	}
 };
