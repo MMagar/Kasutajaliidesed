@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>TODO manager</title>
+    <title>KanbanMini</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -33,7 +33,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="index.html#">TODO manager</a>
+          <a class="brand" href="index.html#">KanbanMini</a>
           <div class="nav-collapse">
             <ul class="nav">
               <li><a href="index.html#">Home</a></li>
@@ -222,17 +222,10 @@
 			</div>
 		</div>
 	</script>
-<script src="./javascript/TaskLister.js"></script>
+	<script src="./javascript/TaskLister.js"></script>
+
 	<!-- generate the task items based on the data and the template -->
 	<script type="text/javascript">
 		TaskLister.init();
-	</script>
-	
-	<script>
-		$('.taskHeader').live("click", function(event){
-			$(this).children('i').toggle();
-			$(this).next().slideToggle();
-		});
-
 	</script>
 </body></html>

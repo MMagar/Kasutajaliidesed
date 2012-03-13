@@ -2,7 +2,11 @@ var TaskLister = {
 
 	init: function (config) {
 		var defaults = {
-		}; 
+		};
+		$('.taskHeader').live("click", function(event){
+			$(this).children('i').toggle();
+			$(this).next().slideToggle();
+		});
 		config = $.extend({}, defaults, config); 
 		this.config = config;
 		this.notification = $('.notification');
