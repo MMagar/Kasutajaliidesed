@@ -3,14 +3,14 @@ var TaskLister = {
 	init: function (config) {
 		var defaults = {
 		};
+
+		config = $.extend({}, defaults, config); 
+		this.config = config;
+		this.notification = $('.notification');
 		$('.taskHeader').live("click", function(event){
 			$(this).children('i').toggle();
 			$(this).next().slideToggle();
 		});
-		config = $.extend({}, defaults, config); 
-		this.config = config;
-		this.notification = $('.notification');
-
 		var taskItemSource = $("#taskItem-template").html();
 		this.taskItemTemplate = Handlebars.compile(taskItemSource); 
 		this.fetchAllTasks();
