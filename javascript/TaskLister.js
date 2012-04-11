@@ -1,7 +1,7 @@
 var TaskLister = {
-
 	init: function (config) {
 		var defaults = {
+			
 		};
 
 		config = $.extend({}, defaults, config); 
@@ -11,10 +11,35 @@ var TaskLister = {
 			$(this).children('i').toggle();
 			$(this).next().slideToggle();
 		});
+		$('#newTaskForm').live('submit', function(e){
+			console.log(this);
+			taskLister.newTaskFromForm(this);
+			e.preventDefault();
+		});
 		var taskItemSource = $("#taskItem-template").html();
 		this.taskItemTemplate = Handlebars.compile(taskItemSource); 
 		this.fetchAllTasks();
+
+		$.fn.serializeObject = function(){
+		    var o = {};
+		    var a = this.serializeArray();
+		    $.each(a, function() {
+		        if (o[this.name] !== undefined) {
+		            if (!o[this.name].push) {
+		                o[this.name] = [o[this.name]];
+		            }
+		            o[this.name].push(this.value || '');
+		        } else {
+		            o[this.name] = this.value || '';
+		        }
+		    });
+		    return o;
+		};
+
+		return this;
 	},
+
+
 
 	fetchTaskIDs: function(){
 		TaskLister.idList = [1,2,3,4,5,6];
@@ -34,7 +59,7 @@ var TaskLister = {
 	fetchTaskDummy: function (id) {
 		if(id == 1) {
 			return {"id": "1",
-					"header": "Clean the room",
+					"title": "Clean the room",
 					"urgency": "2",
 					"importance": "3",
 					"deadline": "20:00 2012/08/24",
@@ -42,7 +67,7 @@ var TaskLister = {
 					"status": "backlog"}
 		} else if(id == 2) {
 			return {"id": "2",
-					"header": "Fix the car",
+					"title": "Fix the car",
 					"urgency": "4",
 					"importance": "2",
 					"deadline": "14:00 2020/08/14",
@@ -50,7 +75,7 @@ var TaskLister = {
 					"status": "backlog"}
 		} else if(id == 3) {
 			return {"id": "3",
-					"header": "Fix the car",
+					"title": "Fix the car",
 					"urgency": "4",
 					"importance": "2",
 					"deadline": "14:00 2020/08/14",
@@ -58,7 +83,7 @@ var TaskLister = {
 					"status": "development"}
 		} else if(id == 4) {
 			return {"id": "4",
-					"header": "Fix the car",
+					"title": "Fix the car",
 					"urgency": "4",
 					"importance": "2",
 					"deadline": "14:00 2020/08/14",
@@ -66,7 +91,7 @@ var TaskLister = {
 					"status": "testing"}
 		} else if(id == 5) {
 			return {"id": "5",
-					"header": "Fix the car",
+					"title": "Fix the car",
 					"urgency": "4",
 					"importance": "2",
 					"deadline": "14:00 2020/08/14",
@@ -74,7 +99,7 @@ var TaskLister = {
 					"status": "done"}
 		} else if(id == 6) {
 			return {"id": "6",
-					"header": "Fix the car",
+					"title": "Fix the car",
 					"urgency": "4",
 					"importance": "2",
 					"deadline": "14:00 2020/08/14",
@@ -114,10 +139,16 @@ var TaskLister = {
 	},
 
 	drawTask: function(taskData) {
+		console.log('called ' + taskData.status);
 		var self = TaskLister;
 		var taskHTML = self.taskItemTemplate(taskData);
 		$("#" + taskData.status).append(taskHTML);
-	}
+	},
 
+	newTaskFromForm: function(form) {
+		console.log($(form).serializeObject());
+		TaskLister.drawTask($(form).serializeObject());
+		$('#newTaskModal').modal('hide');
+	}
 
 };

@@ -46,14 +46,15 @@
       </div>
     </div><!--/.navbar -->
 
-    <div class="container-fluid" >	
+    <div class="container-fluid" >
+      <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a>
 	  <div class="row-fluid">
 	   <div class="span12">
 	   <div class="row-fluid" >
 		<div class="span3">
 			<div class="taskList" id="backlog">
 				<div class="taskListHeader">
-					Backlog <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a>
+					Backlog
 				</div>
 				<div class="taskListBody">
 				</div>
@@ -63,7 +64,7 @@
 		<div class="span3">
 			<div class="taskList" id="development">
 				<div class="taskListHeader">
-					Development <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a>
+					Development
 				</div>
 				<div class="taskListBody">
 				</div>
@@ -73,7 +74,7 @@
 		<div class="span3">
 			<div class="taskList" id="testing">
 				<div class="taskListHeader">
-					Testing <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a>
+					Testing
 				</div>
 				<div class="taskListBody">
 				</div>
@@ -82,7 +83,7 @@
 		<div class="span3">
 			<div class="taskList" id="done">
 				<div class="taskListHeader">
-					Done <a class="btn" data-toggle="modal" href="#newTaskModal">Add task <i class="icon-plus"></i></a>
+					Done
 				</div>
 				<div class="taskListBody">
 				</div>
@@ -104,25 +105,24 @@
       </div>
     </div> <!-- /container -->
 	
-	
 	<div id="newTaskModal" class="modal hide fade" style="display: none;">
 		<div class="modal-header">
 		  <a class="close" data-dismiss="modal">×</a>
 		  <h3>New Task</h3>
 		</div>
 		<div class="modal-body">
-			<form class="form-horizontal">
+			<form action="" method="post" class="form-horizontal" id="newTaskForm">
 				<fieldset>
 					<div class="control-group">
 						<label class="control-label" for="title">Title</label>
 						<div class="controls">
-						  <input class="input-medium focused" id="title" type="text">
+						  <input class="input-medium focused" id="title" name="title" type="text" value="test">
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="kiire">Kiire</label>
+						<label class="control-label" for="urgency">Urgency</label>
 						<div class="controls">
-						  <select id="kiire" class="input-medium">
+						  <select class="input-medium" id="urgency" name="urgency">
 							<option>1</option>
 							<option>2</option>
 							<option>3</option>
@@ -132,9 +132,9 @@
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="oluline">Oluline</label>
+						<label class="control-label" for="importance">Importance</label>
 						<div class="controls">
-						  <select id="oluline" class="input-medium">
+						  <select class="input-medium" id="importance" name="importance">
 							<option>1</option>
 							<option>2</option>
 							<option>3</option>
@@ -146,24 +146,23 @@
 					<div class="control-group">
 						<label class="control-label" for="deadline">Deadline</label>
 						<div class="controls">
-						  <input class="input-medium" id="deadline" type="text">
+						  <input class="input-medium" id="deadline" name="deadline" type="text">
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="description">Description</label>
 						<div class="controls">
-						  <textarea class="input-medium" id="description" rows="2"></textarea>
+						  <textarea class="input-medium" id="description" name="description" rows="2"></textarea>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="status">Status</label>
 						<div class="controls">
-						  <select id="status" class="input-medium">
-							<option>Un-Started</option>
-							<option>In production</option>
-							<option>Waiting</option>
-							<option>Done</option>
-							<option>Canceled</option>
+						  <select id="status" name="status" class="input-medium">
+							<option>backlog</option>
+							<option>development</option>
+							<option>testing</option>
+							<option>done</option>
 						  </select>
 						</div>
 					</div>
@@ -172,9 +171,11 @@
 		 </div>
 		<div class="modal-footer">
 			<a href="#" class="btn" data-dismiss="modal">Close <i class="icon-remove-sign"></i></a>
-			<a href="#" class="btn btn-success">Save task <i class="icon-ok-circle"></i></a>
+
+			<a href="#" class="btn btn-success" onClick="$('#newTaskForm').submit()">Save task <i class="icon-ok-circle"></i></a>
 		</div>
 	</div><!-- /new task Modal -->
+	
 	
     <!-- javascript
     ================================================== -->
@@ -192,7 +193,7 @@
 		<div class="taskItem">
 			<div class="taskHeader">
 				<i class="icon-chevron-up" style="display: none;"></i>
-				<i class="icon-chevron-down"></i>{{header}}
+				<i class="icon-chevron-down"></i>{{title}}
 			</div>
 			<div class="taskBody">
 				<table class="table table-condensed" style="margin-bottom: 0px;">
@@ -226,6 +227,10 @@
 
 	<!-- generate the task items based on the data and the template -->
 	<script type="text/javascript">
-		TaskLister.init();
+		
+		var taskLister = TaskLister.init();
+		
 	</script>
+
+	
 </body></html>
