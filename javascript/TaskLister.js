@@ -165,7 +165,9 @@ var TaskLister = {
 	
 	hideAllTasks: function() {
 		var self = TaskLister;
+		debug.log("hideAllTasks");
 		$.each(self.tasks, function(task){
+			debug.log("hideing a task");
 			self.hideTask(task.id);
 		});
 	}
