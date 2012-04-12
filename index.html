@@ -49,7 +49,10 @@
       <div class="hero-unit" style="background-color:dark-gray;">
         <h1>KanbanMini</h1>
         <p>Some description here.</p>
-        <p><a class="btn btn-primary btn-large" data-toggle="modal" href="#registerModal">Start using»</a></p>
+        <p>
+			<a class="btn btn-primary btn-large" data-toggle="modal" href="#registerModal">Register</a>
+			<a class="btn btn-success btn-large" href="tasklist.html">Try it  »</a>
+		</p>
 
       </div>
 
@@ -81,13 +84,13 @@
 
     </div> <!-- /container -->
 	
-	<div id="registerModal" class="modal hide fade" style="display: none; ">
+	<div id="registerModal" class="modal hide fade" style="display: none;">
 		<div class="modal-header">
 		  <a class="close" data-dismiss="modal">×</a>
 		  <h3>Register</h3>
 		</div>
 		<div class="modal-body">
-			<form class="form-horizontal">
+			<form class="form-horizontal" action="" method="post">
 				<fieldset>
 					<div class="control-group">
 						<label class="control-label" for="username">Username</label>
@@ -122,82 +125,12 @@
 		 </div>
 		<div class="modal-footer">
 			<a href="#" class="btn" data-dismiss="modal">Close <i class="icon-remove-sign"></i></a>
-			<button id="registerButton" data-loading-text="registering..." class="btn btn-success">
+			<button id="registerButton" class="btn btn-success">
 				Register <i class="icon-ok-circle"></i>
 			</button>
 		</div>
 	</div><!-- /register Modal -->
 
-	<div id="newTaskModal" class="modal hide fade" style="display: none; ">
-		<div class="modal-header">
-		  <a class="close" data-dismiss="modal">×</a>
-		  <h3>New Task</h3>
-		</div>
-		<div class="modal-body">
-			<form class="form-horizontal">
-				<fieldset>
-					<div class="control-group">
-						<label class="control-label" for="title">Title</label>
-						<div class="controls">
-							<input class="input-medium focused" id="title" type="text">
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="kiire">Kiire</label>
-						<div class="controls">
-						  <select id="kiire" class="input-medium">
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
-						  </select>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="oluline">Oluline</label>
-						<div class="controls">
-						  <select id="oluline" class="input-medium">
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
-						  </select>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="deadline">Deadline</label>
-						<div class="controls">
-						  <input class="input-medium" id="deadline" type="text">
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="description">Description</label>
-						<div class="controls">
-						  <textarea class="input-medium" id="description" rows="2"></textarea>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="status">Status</label>
-						<div class="controls">
-						  <select id="status" class="input-medium">
-							<option>Un-Started</option>
-							<option>In production</option>
-							<option>Waiting</option>
-							<option>Done</option>
-							<option>Canceled</option>
-						  </select>
-						</div>
-					</div>
-				</fieldset>
-			</form>
-		 </div>
-		<div class="modal-footer">
-			<a href="#" class="btn" data-dismiss="modal">Close <i class="icon-remove-sign"></i></a>
-			<a href="#" class="btn btn-success">Save task <i class="icon-ok-circle"></i></a>
-		</div>
-	</div><!-- /new task Modal -->
 	
     <!-- javascript
     ================================================== -->
