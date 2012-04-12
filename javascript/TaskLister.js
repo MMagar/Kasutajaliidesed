@@ -185,7 +185,7 @@ var TaskLister = {
 		});
 	},
 	
-	searchFor: function(word) {
+	searchFor: function(keyWord) {
 		var self = TaskLister;
 		self.showAllTasks;
 		$.each(self.tasks, function(){
