@@ -37,7 +37,7 @@ var TaskLister = {
 		    return o;
 		};
 		$('#hider').on('click', function(e){
-			TaskLister.hideAllTasks();
+			TaskLister.searchFor('car');
 			e.preventDefault();
 		});
 		return this;
@@ -78,7 +78,7 @@ var TaskLister = {
 					"status": "testing"}
 		} else if(id == 5) {
 			return {"id": "5",
-					"title": "Fix the car",
+					"title": "Fix the",
 					"urgency": "4",
 					"importance": "2",
 					"deadline": "14:00 2020/08/14",
@@ -86,11 +86,11 @@ var TaskLister = {
 					"status": "done"}
 		} else if(id == 6) {
 			return {"id": "6",
-					"title": "Fix the car",
+					"title": "Fix the",
 					"urgency": "4",
 					"importance": "2",
 					"deadline": "14:00 2020/08/14",
-					"description": "Auto ikka katki",
+					"description": "Auto ikka katki car",
 					"status": "done"}
 		}
 	},
@@ -111,8 +111,11 @@ var TaskLister = {
 	},
 	
 	hideTask: function(id) {
-		console.log("hiding " + id);
 		$('#task'+id).hide();
+	},
+	
+	showTask: function(id) {
+		$('#task'+id).show();
 	},
 
 	fetchAllTasks: function() {
@@ -168,11 +171,37 @@ var TaskLister = {
 	
 	hideAllTasks: function() {
 		var self = TaskLister;
-		console.log("hideAllTasks");
 		$.each(self.tasks, function(){
 			console.log("hideing a task");
 			self.hideTask(this.id);
 		});
+	},
+	
+	showAllTasks: function() {
+		var self = TaskLister;
+		$.each(self.tasks, function(){
+			console.log("hideing a task");
+			self.showTask(this.id);
+		});
+	},
+	
+	searchFor: function(word) {
+		var self = TaskLister;
+		self.showAllTasks;
+		$.each(self.tasks, function(){
+			if(self.doesTaskContain(this, keyWord)){
+				console.log("contained");
+			} else {
+				console.log("did not contain");
+				self.hideTask(this.id);
+			}
+		});
+	},
+	
+	doesTaskContain: function(task, keyWord){
+		if(task.title.indexOf(keyWord) != -1) return true;
+		if(task.description.indexOf(keyWord) != -1) return true;
+		return false;
 	}
 
 };
