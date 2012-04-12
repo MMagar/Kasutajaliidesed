@@ -194,8 +194,10 @@
 
 	<!-- generate the task items based on the data and the template -->
 	<script type="text/javascript">
-		$('#template').load('taskItemTemplate.html');
-		TaskLister.init();
+		$('#template').load('taskItemTemplate.html', function(){
+			TaskLister.init();
+		});
+		
 	</script>
 	
 </body></html>
