@@ -39,7 +39,10 @@ var TaskLister = {
 		
 		$('#searchKeyWord').keyup(function(){
 			console.log("should search for");
-			TaskLister.searchFor($('#searchKeyWord').val());
+			TaskLister.showAllTasks();
+			if($('#searchKeyWord').val().length > 2){
+				TaskLister.searchFor($('#searchKeyWord').val());
+			}
 		});
 		return this;
 	},
@@ -188,7 +191,6 @@ var TaskLister = {
 	
 	searchFor: function(keyWord) {
 		var self = TaskLister;
-		self.showAllTasks();
 		$.each(self.tasks, function(){
 			if(!self.doesTaskContain(this, keyWord)){
 				console.log("did not contain" + keyWord);
