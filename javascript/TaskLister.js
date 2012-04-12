@@ -1,5 +1,8 @@
 var TaskLister = {
 	init: function (config) {
+		this.tasks = [];
+		this.keyWords = [];
+		
 		var defaults = {
 			
 		};
@@ -17,8 +20,7 @@ var TaskLister = {
 			e.preventDefault();
 		});
 		var taskItemSource = $("#taskItem-template").html();
-		this.tasks = [];
-		this.keyWords = [];
+		
 		this.taskItemTemplate = Handlebars.compile(taskItemSource); 
 		this.fetchAllTasks();
 
