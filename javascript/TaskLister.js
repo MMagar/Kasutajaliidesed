@@ -54,48 +54,48 @@ var TaskLister = {
 		if(id == 1) {
 			return {"id": "1",
 					"title": "Add login",
-					"urgency": "2",
-					"importance": "3",
+					"urgency": "Important",
+					"importance": "Very important",
 					"deadline": "20:00 2012/08/24",
 					"description": "Client should be able to log in.",
 					"status": "backlog"}
 		} else if(id == 2) {
 			return {"id": "2",
 					"title": "Show friendlist",
-					"urgency": "4",
-					"importance": "2",
+					"urgency": "Life or death",
+					"importance": "Not important",
 					"deadline": "14:00 2020/08/14",
 					"description": "Should be able to see your friends",
 					"status": "backlog"}
 		} else if(id == 3) {
 			return {"id": "3",
 					"title": "Add contacts",
-					"urgency": "4",
-					"importance": "2",
+					"urgency": "Very urgent",
+					"importance": "Not important",
 					"deadline": "14:00 2020/08/14",
 					"description": "Add new freinds to the list",
 					"status": "development"}
 		} else if(id == 4) {
 			return {"id": "4",
 					"title": "Log out",
-					"urgency": "4",
-					"importance": "2",
+					"urgency": "Very urgent",
+					"importance": "Very important",
 					"deadline": "14:00 2020/08/14",
 					"description": "End the session of the user",
 					"status": "testing"}
 		} else if(id == 5) {
 			return {"id": "5",
 					"title": "Change settings",
-					"urgency": "4",
-					"importance": "2",
+					"urgency": "Meaningless",
+					"importance": "Not important",
 					"deadline": "14:00 2020/08/14",
 					"description": "Change the settings of the user",
 					"status": "done"}
 		} else if(id == 6) {
 			return {"id": "6",
 					"title": "Chat",
-					"urgency": "4",
-					"importance": "2",
+					"urgency": "It can wait",
+					"importance": "Meaningless",
 					"deadline": "14:00 2020/08/14",
 					"description": "Should be able to chat with other users",
 					"status": "done"}
