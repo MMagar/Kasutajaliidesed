@@ -53,51 +53,51 @@ var TaskLister = {
 	fetchTaskDummy: function (id) {
 		if(id == 1) {
 			return {"id": "1",
-					"title": "Clean the room",
+					"title": "Add login",
 					"urgency": "2",
 					"importance": "3",
 					"deadline": "20:00 2012/08/24",
-					"description": "Mingi pikem tekst. Mingi pikem tekst. Mingi pikem tekst.Mingi pikem tekst.",
+					"description": "Client should be able to log in.",
 					"status": "backlog"}
 		} else if(id == 2) {
 			return {"id": "2",
-					"title": "Fix the car",
+					"title": "Show friendlist",
 					"urgency": "4",
 					"importance": "2",
 					"deadline": "14:00 2020/08/14",
-					"description": "Auto ikka katki",
+					"description": "Should be able to see your friends",
 					"status": "backlog"}
 		} else if(id == 3) {
 			return {"id": "3",
-					"title": "Fix the car",
+					"title": "Add contacts",
 					"urgency": "4",
 					"importance": "2",
 					"deadline": "14:00 2020/08/14",
-					"description": "Auto ikka katki",
+					"description": "Add new freinds to the list",
 					"status": "development"}
 		} else if(id == 4) {
 			return {"id": "4",
-					"title": "Fix the car",
+					"title": "Log out",
 					"urgency": "4",
 					"importance": "2",
 					"deadline": "14:00 2020/08/14",
-					"description": "Auto ikka katki",
+					"description": "End the session of the user",
 					"status": "testing"}
 		} else if(id == 5) {
 			return {"id": "5",
-					"title": "Fix the",
+					"title": "Change settings",
 					"urgency": "4",
 					"importance": "2",
 					"deadline": "14:00 2020/08/14",
-					"description": "Auto ikka katki",
+					"description": "Change the settings of the user",
 					"status": "done"}
 		} else if(id == 6) {
 			return {"id": "6",
-					"title": "Fix the",
+					"title": "Chat",
 					"urgency": "4",
 					"importance": "2",
 					"deadline": "14:00 2020/08/14",
-					"description": "Auto ikka katki car",
+					"description": "Should be able to chat with other users",
 					"status": "done"}
 		}
 	},
