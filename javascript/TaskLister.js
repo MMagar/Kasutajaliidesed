@@ -108,6 +108,7 @@ var TaskLister = {
 	},
 	
 	hideTask: function(id) {
+		console.log("hiding " + id);
 		$('#task'+id).hide();
 	},
 
