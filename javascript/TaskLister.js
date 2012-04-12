@@ -160,7 +160,7 @@ var TaskLister = {
 
 	addTask: function(taskData){
 		var self = TaskLister;
-		self.keyWords = keyWords.concat(taskData.title.split(" "), taskData.description.split(" "));
+		self.keyWords = self.keyWords.concat(taskData.title.split(" "), taskData.description.split(" "));
 		console.log(keyWords);
 		self.tasks.push(taskData);
 		self.drawTask(taskData);
