@@ -37,7 +37,10 @@ var TaskLister = {
 		    return o;
 		};
 		
-		$('#searchKeyWord').keyup(TaskLister.searchFor($('#searchKeyWord').val()));
+		$('#searchKeyWord').keyup(function(){
+			console.log("should search for");
+			TaskLister.searchFor($('#searchKeyWord').val());
+		});
 		$('#taskSearcher').on('click', function(e){
 			e.preventDefault();
 		});
