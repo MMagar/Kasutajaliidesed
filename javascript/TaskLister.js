@@ -156,8 +156,8 @@ var TaskLister = {
 			.removeClass("progress-striped")
 			.addClass("progress-success");
 		self.notification.delay(2000).slideToggle();
-		$('searchKeyWord').delay(2000).typeahead({
-			source: self.keyWords
+		$('#searchKeyWord').delay(2000).typeahead({
+			source: keyWords
 		});
 	},
 
