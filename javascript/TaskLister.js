@@ -139,7 +139,6 @@ var TaskLister = {
 	},
 
 	drawTask: function(taskData) {
-		console.log('called ' + taskData.status);
 		var self = TaskLister;
 		var taskHTML = self.taskItemTemplate(taskData);
 		$("#" + taskData.status).append(taskHTML);

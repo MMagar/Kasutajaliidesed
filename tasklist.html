@@ -188,46 +188,12 @@
 	<script src="./javascript/handlebars/handlebars-1.0.0.beta.6.js"></script>
 	
 
-	<!-- taskItem template. May be loaded using ajax -->
-	<script id="taskItem-template" type="text/x-handlebars-template">
-		<div class="taskItem">
-			<div class="taskHeader">
-				<i class="icon-chevron-up" style="display: none;"></i>
-				<i class="icon-chevron-down"></i>{{title}}
-			</div>
-			<div class="taskBody">
-				<table class="table table-condensed" style="margin-bottom: 0px;">
-				  <tbody>
-					<tr>
-					  <td>Urgency:</td>
-					  <td>{{urgency}}</td>
-					</tr>
-					<tr>
-					  <td>Importance:</td>
-					  <td>{{importance}}</td>
-					</tr>
-					<tr>
-					  <td>Deadline:</td>
-					  <td>{{deadline}}</td>
-					</tr>
-					<tr>
-					  <td>Description:</td>
-					  <td>{{description}}</td>
-					</tr>
-					<tr>
-					  <td>Status:</td>
-					  <td>{{status}}</td>
-					</tr>
-				  </tbody>
-				</table>
-			</div>
-		</div>
-	</script>
+	
 	<script src="./javascript/TaskLister.js"></script>
 
 	<!-- generate the task items based on the data and the template -->
 	<script type="text/javascript">
-		
+		$('body').load('taskItemTemplate.html');
 		var taskLister = TaskLister.init();
 		
 	</script>

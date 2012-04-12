@@ -1,6 +1,6 @@
 
 .taskList {
-	height: 600px;
+	height: 475px;
 	border: 1px solid #343838;
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
@@ -37,7 +37,11 @@
 .taskItem {
 	border-top: 1px solid #00DFFC;
 	border-bottom: 1px solid #005F6B;
+	margin-bottom: 1px;
 	background-color: #00B4CC;
+	-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .taskHeader {
