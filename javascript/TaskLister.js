@@ -157,7 +157,7 @@ var TaskLister = {
 			.addClass("progress-success");
 		self.notification.delay(2000).slideToggle();
 		$('#searchKeyWord').delay(2000).typeahead({
-			source: keyWords
+			source: self.keyWords
 		});
 	},
 
