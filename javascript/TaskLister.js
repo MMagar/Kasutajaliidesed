@@ -37,7 +37,7 @@ var TaskLister = {
 		    return o;
 		};
 		$('#hider').on('click', function(e){
-			TaskLister.hideAllTasks());
+			TaskLister.hideAllTasks();
 			e.preventDefault();
 		});
 		return this;
