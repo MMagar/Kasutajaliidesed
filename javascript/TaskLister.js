@@ -156,14 +156,15 @@ var TaskLister = {
 			.removeClass("progress-striped")
 			.addClass("progress-success");
 		self.notification.delay(2000).slideToggle();
+		$('searchKeyWord').delay(2000).typeahead({
+			source: self.keyWords
+		});
 	},
 
 	addTask: function(taskData){
 		var self = TaskLister;
 		self.keyWords = self.keyWords.concat(taskData.title.split(" "), taskData.description.split(" "));
-		$('searchKeyWord').typeahead({
-			source: self.keyWords
-		});
+		
 		self.tasks.push(taskData);
 		self.drawTask(taskData);
 	},
