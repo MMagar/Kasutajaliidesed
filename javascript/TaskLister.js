@@ -13,7 +13,7 @@ var TaskLister = {
 		});
 		$('#newTaskForm').live('submit', function(e){
 			console.log(this);
-			taskLister.newTaskFromForm(this);
+			TaskLister.newTaskFromForm(this);
 			e.preventDefault();
 		});
 		var taskItemSource = $("#taskItem-template").html();
@@ -40,9 +40,6 @@ var TaskLister = {
 		$('#searchKeyWord').keyup(function(){
 			console.log("should search for");
 			TaskLister.searchFor($('#searchKeyWord').val());
-		});
-		$('#taskSearcher').on('click', function(e){
-			e.preventDefault();
 		});
 		return this;
 	},
