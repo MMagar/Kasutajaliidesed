@@ -191,7 +191,7 @@ var TaskLister = {
 	
 	searchFor: function(keyWord) {
 		var self = TaskLister;
-		self.showAllTasks;
+		self.showAllTasks();
 		$.each(self.tasks, function(){
 			if(!self.doesTaskContain(this, keyWord)){
 				console.log("did not contain" + keyWord);
