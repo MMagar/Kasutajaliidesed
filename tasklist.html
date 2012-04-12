@@ -150,7 +150,7 @@
 					<div class="control-group">
 						<label class="control-label" for="deadline">Deadline</label>
 						<div class="controls">
-						  <input class="input-medium" id="deadline" name="deadline" type="text">
+						  <input class="input-medium" id="deadline" name="deadline" type="text" value="06/14/2008">
 						</div>
 					</div>
 					<div class="control-group">
@@ -193,6 +193,8 @@
 	<script src="./javascript/bootstrap/bootstrap-typeahead.js"></script>
 	
 	<script src="./javascript/handlebars/handlebars-1.0.0.beta.6.js"></script>
+	<link rel="stylesheet" media="screen" type="text/css" href="css/datepicker.css" />
+	<script type="text/javascript" src="javascript/datepicker.js"></script>
 	
 
 	
@@ -200,6 +202,14 @@
 
 	<!-- generate the task items based on the data and the template -->
 	<script type="text/javascript">
+		$('#deadline').DatePicker({
+			flat: true,
+			date: '2008-07-31',
+			current: '2008-07-31',
+			calendars: 1,
+			starts: 1
+		});
+		
 		$('#template').load('taskItemTemplate.html', function(){
 			TaskLister.init();
 		});
