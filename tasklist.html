@@ -176,6 +176,7 @@
 		</div>
 	</div><!-- /new task Modal -->
 	
+	<div id="template" style="visibility:hidden;" />
 	
     <!-- javascript
     ================================================== -->
@@ -193,10 +194,8 @@
 
 	<!-- generate the task items based on the data and the template -->
 	<script type="text/javascript">
-		$('body').load('taskItemTemplate.html');
-		var taskLister = TaskLister.init();
-		
+		$('#template').append('taskItemTemplate.html');
+		TaskLister.init();
 	</script>
-
 	
 </body></html>
