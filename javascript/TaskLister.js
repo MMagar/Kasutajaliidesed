@@ -17,7 +17,7 @@ var TaskLister = {
 			e.preventDefault();
 		});
 		var taskItemSource = $("#taskItem-template").html();
-		this.tasks = {};
+		this.tasks = [];
 		this.taskItemTemplate = Handlebars.compile(taskItemSource); 
 		this.fetchAllTasks();
 
