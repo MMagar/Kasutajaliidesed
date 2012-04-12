@@ -161,7 +161,9 @@ var TaskLister = {
 	addTask: function(taskData){
 		var self = TaskLister;
 		self.keyWords = self.keyWords.concat(taskData.title.split(" "), taskData.description.split(" "));
-		console.log(self.keyWords);
+		$('searchKeyWord').typeahead({
+			source: self.keyWords
+		});
 		self.tasks.push(taskData);
 		self.drawTask(taskData);
 	},
