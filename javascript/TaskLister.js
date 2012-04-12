@@ -36,8 +36,9 @@ var TaskLister = {
 		    });
 		    return o;
 		};
-		$('#hider').on('click', function(e){
-			TaskLister.searchFor('car');
+		
+		$('#searchKeyWord').keyup(TaskLister.searchFor($('#searchKeyWord').val()));
+		$('#taskSearcher').on('click', function(e){
 			e.preventDefault();
 		});
 		return this;
@@ -189,10 +190,8 @@ var TaskLister = {
 		var self = TaskLister;
 		self.showAllTasks;
 		$.each(self.tasks, function(){
-			if(self.doesTaskContain(this, keyWord)){
-				console.log("contained");
-			} else {
-				console.log("did not contain");
+			if(!self.doesTaskContain(this, keyWord)){
+				console.log("did not contain" + keyWord);
 				self.hideTask(this.id);
 			}
 		});
