@@ -18,6 +18,7 @@ var TaskLister = {
 		});
 		var taskItemSource = $("#taskItem-template").html();
 		this.tasks = [];
+		this.keyWords = [];
 		this.taskItemTemplate = Handlebars.compile(taskItemSource); 
 		this.fetchAllTasks();
 
@@ -157,6 +158,8 @@ var TaskLister = {
 
 	addTask: function(taskData){
 		var self = TaskLister;
+		keyWords = keyWords.concat(taskData.title.split(" "), taskData.description.split(" "));
+		console.log(keyWords);
 		self.tasks.push(taskData);
 		self.drawTask(taskData);
 	},
