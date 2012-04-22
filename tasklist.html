@@ -52,6 +52,7 @@
 
     <div class="container-fluid" >
       <a class="btn" data-toggle="modal" href="#newTaskModal" style="margin-bottom: 4px;">Add task <i class="icon-plus"></i></a>
+	  <a class="btn" href="#" style="margin-bottom: 4px;" id="random">Random</a>
 	  <div class="row-fluid">
 	   <div class="span12">
 	   <div class="row-fluid" >
@@ -179,7 +180,7 @@
 			<a href="#" class="btn btn-success" onClick="$('#newTaskForm').submit()">Save task <i class="icon-ok-circle"></i></a>
 		</div>
 	</div><!-- /new task Modal -->
-	
+	<div style="position:absolute;bottom:0;display:none;" id="pinkie"><img src="img/suddenPinkie.gif" alt="You know what this calls for?!"/></div>
 	<div id="template" style="visibility:hidden;" />
 	
     <!-- javascript
@@ -198,10 +199,16 @@
 
 	<!-- generate the task items based on the data and the template -->
 	<script type="text/javascript">
-		
-		$('#template').load('taskItemTemplate.html', function(){
-			TaskLister.init();
+		$('#random').on("click", function(e){
+			console.log("jej");
+			$('#pinkie').html('<img src="img/suddenPinkie.gif" alt="You know what this calls for?!"/>');
+			$('#pinkie').fadeIn('fast');
+			setTimeout(function(){ $('#pinkie').fadeOut() }, 3200);
+			e.preventDefault();
 		});
+		/*$('#template').load('taskItemTemplate.html', function(){
+			TaskLister.init();
+		});*/
 	</script>
 	
 </body></html>
