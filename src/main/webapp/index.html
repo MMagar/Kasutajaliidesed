@@ -1,0 +1,152 @@
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>KanbanMini</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  </head>
+
+  <body>
+   <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="index.html#">KanbanMini</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="index.html#">Home</a></li>
+              <li><a href="index.html#about">About</a></li>
+              <li><a href="tasklist.html">Task list</a></li>
+            </ul>
+              <form id="loginForm" class="form-inline pull-right" style="display: inline; margin-bottom: 0; margin-left: 15px">
+                  <input type="text" id="loginEmail" placeholder="Email" class="input-small">
+                  <input type="password" id="loginPassword" placeholder="Password" class="input-small">
+                  <button id="loginButton" class="btn btn-success" style="margin: 5px">Login</button>
+              </form>
+              <form id="logoutForm" class="form-inline pull-right" style="display: inline; margin-bottom: 0; margin-top: 5px; margin-left: 15px;color: white">
+                  Logged in as <span id="username"></span> <a href="" id="logoutButton">Log out</a>
+              </form>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="width:900px;">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit" style="background-color:dark-gray;">
+        <h1>KanbanMini</h1>
+        <p>Some description here.</p>
+        <p>
+			<a class="btn btn-primary btn-large" data-toggle="modal" href="#registerModal">Register</a>
+			<a class="btn btn-success btn-large" href="tasklist.html">Try it  »</a>
+		</p>
+
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span3">
+          <h2>Easy to use</h2>
+           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" data-toggle="modal" href="#newTaskModal">View details »</a></p>
+        </div>
+        <div class="span3">
+          <h2>100% FREE</h2>
+           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" href="http://twitter.github.com/bootstrap/examples/hero.html#">View details »</a></p>
+       </div>
+        <div class="span3">
+          <h2>NO registering needed</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn" href="http://twitter.github.com/bootstrap/examples/hero.html#">View details »</a></p>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>© Company 2012</p>
+		Get the source code on GitHub : <a href="https://github.com/MMagar/Kasutajaliidesed">MMagar/Kasutajaliidesed</a>
+      </footer>
+
+    </div> <!-- /container -->
+
+	<div id="registerModal" class="modal hide fade" style="display: none;">
+		<div class="modal-header">
+		  <a class="close" data-dismiss="modal">×</a>
+		  <h3>Register</h3>
+		</div>
+		<div class="modal-body">
+			<form class="form-horizontal" action="" method="post">
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label" for="email">Email</label>
+						<div class="controls">
+						  <input class="input-medium" id="email" type="text">
+						  <span class="help-inline"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="password">Password</label>
+						<div class="controls">
+						  <input class="input-medium" id="password" type="password">
+						  <span class="help-inline"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="passwordRepeat">Repeat password</label>
+						<div class="controls">
+						  <input class="input-medium" id="passwordRepeat" type="password">
+						  <span class="help-inline"></span>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		 </div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close <i class="icon-remove-sign"></i></a>
+			<button id="registerButton" class="btn btn-success">
+				Register <i class="icon-ok-circle"></i>
+			</button>
+		</div>
+	</div><!-- /register Modal -->
+
+
+    <!-- javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./javascript/jquery.js"></script>
+    <script src="./javascript/bootstrap/bootstrap-transition.js"></script>
+    <script src="./javascript/bootstrap/bootstrap-alert.js"></script>
+    <script src="./javascript/bootstrap/bootstrap-modal.js"></script>
+    <script src="./javascript/bootstrap/bootstrap-button.js"></script>
+	<script src="./javascript/less-1.2.2.min.js"></script>
+    <script src="./javascript/jquery.base64.min.js"></script>
+   <script src="./javascript/jquery.cookie.js"></script>
+
+    <script src="./javascript/validations/validateRegForm.js"></script>
+    <script src="./javascript/UserSession.js"></script>
+   <script type="text/javascript">
+       var session = UserSession.init();
+   </script>
+
+</body></html>

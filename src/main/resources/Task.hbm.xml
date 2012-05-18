@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ee.kanbanmini.Task" table="tasks">
+        <id name="id" type="long" column="id">
+            <generator class="increment" />
+        </id>
+        <property name="title" column="title" />
+        <property name="urgency" column="urgency" />
+        <property name="importance" column="importance"/>
+        <property name="deadline" column="deadline"/>
+        <property name="description" column="description"/>
+        <property name="status" column="status"/>
+    </class>
+</hibernate-mapping>

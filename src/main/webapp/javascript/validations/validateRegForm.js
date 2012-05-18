@@ -1,19 +1,3 @@
-function validateUsername() {
-	var username = $('#username');
-	var errorMsg = username.next();
-	var controlGroup = username.parent().parent();
-  	if(username.val().length < 4){
-  		controlGroup.addClass('error').removeClass('success');
-  		errorMsg.text("Username too short!");
-  		errorMsg.show();
-  		return false;
-  	} else {
-  		controlGroup.removeClass('error').addClass('success');
-  		errorMsg.hide();
-  		return true;
-  	}
-};
-
 function validatePasswordRepeat() {
 	var passwordRep = $('#passwordRepeat');
 	var password = $('#password');
@@ -78,19 +62,15 @@ function validateEmail() {
 
 var validateRegForm = function(){
 	var wasError = false;
-	if(!validateUsername())
-		wasError = true;
 	if(!validatePassword())
 		wasError = true;
 	if(!validatePasswordRepeat())
 		wasError = true;
 	if(!validateEmail())
 		wasError = true;
-	return wasError;
+	return !wasError;
 };
 
-$('#username').keyup(validateUsername);
 $('#passwordRepeat').keyup(validatePasswordRepeat);
 $('#password').keyup(validatePassword);
 $('#email').keyup(validateEmail);
-$('#registerButton').click(validateRegForm);

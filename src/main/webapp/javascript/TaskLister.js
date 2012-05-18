@@ -1,7 +1,6 @@
 var TaskLister = {
 	init: function (config) {
 		this.tasks = [];
-		this.keyWords = [];
 		
 		var defaults = {
 			
@@ -109,8 +108,8 @@ var TaskLister = {
 	fetchTask: function(id) {
 		var dfd = $.Deferred();
 		$.ajax({
-			url: 'JSONsamples/tasks/' + id + '.json',
-			dataType: 'jsonp',
+			url: 'gettask?id=' + id,
+			dataType: 'json',
 			success: dfd.resolve,
 			error: dfd.reject
 		});
@@ -156,14 +155,10 @@ var TaskLister = {
 			.removeClass("progress-striped")
 			.addClass("progress-success");
 		self.notification.delay(2000).slideToggle();
-		$('#searchKeyWord').delay(2000).typeahead({
-			source: self.keyWords
-		});
 	},
 
 	addTask: function(taskData){
 		var self = TaskLister;
-		self.keyWords = self.keyWords.concat(taskData.title.split(" "), taskData.description.split(" "));
 		
 		self.tasks.push(taskData);
 		self.drawTask(taskData);
@@ -172,19 +167,44 @@ var TaskLister = {
 	drawTask: function(taskData) {
 		var self = TaskLister;
 		var taskHTML = self.taskItemTemplate(taskData);
-		$("#" + taskData.status).append(taskHTML);
+		$("#" + self.getStatusName(taskData.status)).append(taskHTML);
+	},
+
+	getStatusName: function(statusId){
+	    if(statusId == 0){
+	        return "backlog";
+	    } else if(statusId == 1){
+            return "development";
+        } else if(statusId == 2){
+           return "testing";
+        } else if(statusId == 3){
+           return "done";
+        } else return "backlog";
 	},
 
 	newTaskFromForm: function(form) {
-		console.log(TaskLister.tasks);
-		TaskLister.addTask($(form).serializeObject());
+	    var task = $(form).serializeObject();
+		TaskLister.addTask(task);
+		TaskLister.uploadNewTask(task);
 		$('#newTaskModal').modal('hide');
+	},
+
+	uploadNewTask: function(task){
+	    task.id = -2;
+	    console.log("uploading:")
+	    console.log(task);
+	    $.post('newtask', task, function(data){
+	        console.log(data);
+	    })
+	        .success(function(){console.log("upload successful")})
+	        .error(function(){console.log("upload error")})
+	        .complete(function(){console.log("upload complete")});
 	},
 	
 	hideAllTasks: function() {
 		var self = TaskLister;
 		$.each(self.tasks, function(){
-			console.log("hideing a task");
+			console.log("hiding a task");
 			self.hideTask(this.id);
 		});
 	},
@@ -192,7 +212,7 @@ var TaskLister = {
 	showAllTasks: function() {
 		var self = TaskLister;
 		$.each(self.tasks, function(){
-			console.log("hideing a task");
+			console.log("showing a task");
 			self.showTask(this.id);
 		});
 	},
@@ -211,6 +231,22 @@ var TaskLister = {
 		if(task.title.indexOf(keyWord) != -1) return true;
 		if(task.description.indexOf(keyWord) != -1) return true;
 		return false;
+	},
+
+	updateTask: function(updatedTask){
+	    var self = TaskLister;
+	    console.log(updatedTask);
+	    $.each(self.tasks, function(){
+	        console.log("comparing" + this.id + " to " + updatedTask.id);
+            if(this.id === updatedTask.id){
+                console.log(this);
+                console.log(updatedTask);
+                console.log("and the result:");
+                $.extend(this, updatedTask)
+                console.log(this);
+            }
+        });
+        console.log(self.tasks[4]);
 	}
 
 };

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ee.kanbanmini.User" table="users">
+        <id name="id" type="long" column="id">
+            <generator class="increment" />
+        </id>
+        <property name="email" column="email"/>
+        <property name="authorizationString" column="authorizationString" />
+    </class>
+    <query name="findUserByEmail">
+        <![CDATA[from User u where u.email = :email]]>
+    </query>
+    <query name="findUserByAuth">
+        <![CDATA[from User u where u.authorizationString = :auth]]>
+    </query>
+    <query name="findUserByAuthAndEmail">
+        <![CDATA[from User u where u.authorizationString = :auth and u.email = :email]]>
+    </query>
+</hibernate-mapping>
