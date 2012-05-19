@@ -3,6 +3,7 @@ var UserSession = {
 	    $('#logoutForm').hide();
 	    this.emailField = $('#email');
 	    this.passwordField = $('#password');
+	    this.passwordFieldRepeat = $('#passwordRepeat');
         this.loginEmailField = $('#loginEmail');
         this.loginPasswordField = $('#loginPassword');
 
@@ -27,17 +28,47 @@ var UserSession = {
 	    return this;
     },
 
+    sendRegisterRequest: function(email, password){
+        var self = UserSession;
+        var authString = self.generateAuthorizationString(email, password);
+        var registrationInfo = {
+            email: email,
+            authString: authString
+        };
+        console.log("Registering with:");
+        console.log(registrationInfo);
+        $.post('register', registrationInfo, function(data){
+            if(data.result == "User registered!"){
+                self.registrationSuccessful();
+            } else {
+                alert("Reg failed" + data.result);
+            }
+        });
+    },
+
+    registrationSuccessful: function() {
+        var self = UserSession;
+        $('#registerModal').modal('hide');
+        var email = self.emailField.val();
+        var authString = self.generateAuthorizationString(email, self.passwordField.val());
+        self.emailField.val('');
+        self.passwordField.val('');
+        self.passwordFieldRepeat.val('');
+        self.loginSuccessful(email, authString);
+    },
+
     logIn: function(){
         var self = UserSession;
-        self.generateAuthorizationString(self.loginEmailField.val(), self.loginPasswordField.val());
+        var email = self.loginEmailField.val();
+        var authString = self.generateAuthorizationString(email, self.loginPasswordField.val());
         var loginInfo = {
-            email: self.loginEmailField.val(),
-            authString: self.authString
+            email: email,
+            authString: authString
         };
         console.log(loginInfo);
         $.post('login', loginInfo, function(data){
             if(data.result == "Login success"){
-                self.loginSuccess();
+                self.loginSuccessful(email, authString);
             } else {
                 alert("Login failed" + data.result);
             }
@@ -45,12 +76,17 @@ var UserSession = {
         return false;
     },
 
-    loginSuccess: function(){
-        $.cookie("email", UserSession.loginEmailField.val());
-        $.cookie("auth", UserSession.authString);
-        $('#username').text(UserSession.loginEmailField.val());
+    loginSuccessful: function(email, authString){
+        var self = UserSession;
+        self.email = email;
+        self.authString = authString;
+        $.cookie("email", email);
+        $.cookie("auth", authString);
+        $('#username').text(email);
         $('#loginForm').hide();
         $('#logoutForm').show();
+        self.loginEmailField.val('');
+        self.loginPasswordField.val('');
     },
 
     logOut: function(){
@@ -63,35 +99,16 @@ var UserSession = {
     },
 
     register: function(){
-        console.log("attempt reg...");
-        console.log(validateRegForm());
-        if(validateRegForm() == true){
-            UserSession.sendRegisterRequest();
-        }
-    },
-
-    sendRegisterRequest: function(){
         var self = UserSession;
-        self.generateAuthorizationString(self.emailField.val(), self.passwordField.val());
-        var registrationInfo = {
-            email: UserSession.emailField.val(),
-            authString: UserSession.authString
-        };
-        console.log("Registering with:");
-        console.log(registrationInfo);
-        $.post('register', registrationInfo, function(data){
-            if(data.result == "User registered!"){
-                alert("Reg success");
-            } else {
-                alert("Reg failed" + data.result);
-            }
-        });
+        if(validateRegForm() == true){
+           self.sendRegisterRequest(self.emailField.val(), self.passwordField.val());
+        }
     },
 
     generateAuthorizationString: function(email, password){
         var self = UserSession;
         var combinedString = email + ":" + password;
-        UserSession.authString = $.base64.encode(combinedString);
+        return $.base64.encode(combinedString);
     },
 
     getUserTaskIds: function(){}
