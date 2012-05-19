@@ -1,6 +1,7 @@
 package ee.kanbanmini;
 
 import com.opensymphony.xwork2.Action;
+import org.apache.log4j.helpers.LogLog;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,9 +11,6 @@ import com.opensymphony.xwork2.Action;
  * To change this template use File | Settings | File Templates.
  */
 public class Registration {
-    private int REGISTER = 1;
-    private int LOGIN = 2;
-    private int action;
     private String email;
     private String authString;
     private String result;
@@ -25,14 +23,14 @@ public class Registration {
     }
 
     public String execute(){
-        if(action == REGISTER)
-            register();
-        else if (action == LOGIN)
-            login();
+        LogLog.warn("WARN exec");
         return Action.SUCCESS;
     }
 
-    private void register(){
+    public String register(){
+        LogLog.warn("WARN reg");
+
+        System.out.println("Should reg" + email + " : " + authString);
         User newUser = new User(email, authString);
         try {
             hibernate.registerUser(newUser);
@@ -40,19 +38,18 @@ public class Registration {
         } catch (UserExists userExists) {
             result = "Email already registered!";
         }
+        return Action.SUCCESS;
     }
 
-    private void login(){
+    public String login(){
+        LogLog.warn("WARN login");
         User user = hibernate.logIn(email, authString);
         if(user == null){
             result = "Login failed";
         } else {
             result = "Login success";
         }
-    }
-
-    public void setAction(int action) {
-        this.action = action;
+        return Action.SUCCESS;
     }
 
     public void setEmail(String email) {

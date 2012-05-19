@@ -48,6 +48,7 @@ public class Hibernate {
     }
 
     public void registerUser(User user) throws UserExists {
+        System.out.println("Registering:" + user.getEmail());
         if(findUser(user.getEmail()) != null){
             throw new UserExists();
         }
@@ -66,6 +67,7 @@ public class Hibernate {
         if(!query.list().isEmpty())
             result = (User)query.list().get(0);
         session.close();
+        System.out.println("database found: " + result);
         return result;
     }
 

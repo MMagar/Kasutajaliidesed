@@ -31,12 +31,11 @@ var UserSession = {
         var self = UserSession;
         self.generateAuthorizationString(self.loginEmailField.val(), self.loginPasswordField.val());
         var loginInfo = {
-            action: 2,
             email: self.loginEmailField.val(),
             authString: self.authString
         };
         console.log(loginInfo);
-        $.post('register', loginInfo, function(data){
+        $.post('login', loginInfo, function(data){
             if(data.result == "Login success"){
                 self.loginSuccess();
             } else {
@@ -75,7 +74,6 @@ var UserSession = {
         var self = UserSession;
         self.generateAuthorizationString(self.emailField.val(), self.passwordField.val());
         var registrationInfo = {
-            action: 1,
             email: UserSession.emailField.val(),
             authString: UserSession.authString
         };
