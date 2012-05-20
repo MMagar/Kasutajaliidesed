@@ -38,6 +38,7 @@ var UserSession = {
         console.log("Registering with:");
         console.log(registrationInfo);
         $.post('register', registrationInfo, function(data){
+            console.log(data);
             if(data.result == "User registered!"){
                 self.registrationSuccessful();
             } else {

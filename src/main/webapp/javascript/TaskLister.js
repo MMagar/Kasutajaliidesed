@@ -49,60 +49,17 @@ var TaskLister = {
 		return this;
 	},
 
-	fetchTaskDummy: function (id) {
-		if(id == 1) {
-			return {"id": "1",
-					"title": "Add login",
-					"urgency": "Important",
-					"importance": "Very important",
-					"deadline": "20:00 2012/08/24",
-					"description": "Client should be able to log in.",
-					"status": "backlog"}
-		} else if(id == 2) {
-			return {"id": "2",
-					"title": "Show friendlist",
-					"urgency": "Life or death",
-					"importance": "Not important",
-					"deadline": "14:00 2020/08/14",
-					"description": "Should be able to see your friends",
-					"status": "backlog"}
-		} else if(id == 3) {
-			return {"id": "3",
-					"title": "Add contacts",
-					"urgency": "Very urgent",
-					"importance": "Not important",
-					"deadline": "14:00 2020/08/14",
-					"description": "Add new freinds to the list",
-					"status": "development"}
-		} else if(id == 4) {
-			return {"id": "4",
-					"title": "Log out",
-					"urgency": "Very urgent",
-					"importance": "Very important",
-					"deadline": "14:00 2020/08/14",
-					"description": "End the session of the user",
-					"status": "testing"}
-		} else if(id == 5) {
-			return {"id": "5",
-					"title": "Change settings",
-					"urgency": "Meaningless",
-					"importance": "Not important",
-					"deadline": "14:00 2020/08/14",
-					"description": "Change the settings of the user",
-					"status": "done"}
-		} else if(id == 6) {
-			return {"id": "6",
-					"title": "Chat",
-					"urgency": "It can wait",
-					"importance": "Meaningless",
-					"deadline": "14:00 2020/08/14",
-					"description": "Should be able to chat with other users",
-					"status": "done"}
-		}
-	},
-	
 	fetchTaskIDs: function(){
-		TaskLister.idList = [1,2,3,4,5,6];
+		var data = { authString: $.cookie("auth")};
+		var dfd = $.Deferred();
+        $.ajax({
+            url: 'tasklist',
+            data: data,
+            dataType: 'json',
+            success: dfd.resolve,
+            error: dfd.reject
+        });
+        return dfd.promise();
 	},
 
 	fetchTask: function(id) {
@@ -126,35 +83,46 @@ var TaskLister = {
 
 	fetchAllTasks: function() {
 		var self = TaskLister;
-		self.fetchTaskIDs();
-		self.notification.slideToggle();
-		var numberOfTasks = self.idList.length;
-		self.notification.children(".progress")
-			.addClass("active")
-			.addClass("progress-info")
-			.addClass("progress-striped")
-			.removeClass("progress-success");
-		var bar = self.notification.children(".progress").children(".bar");
-		$.each(self.idList, function(index, id){
-			bar.text("Loading tasks " + id + "/" + numberOfTasks);
-			self.fetchTask(id).then(function (taskData){
-				self.addTask(taskData);
-				bar.css('width', function(){
-					return (index+1)*100 / numberOfTasks + "%";
-				});
-			}).fail(function(){
-				self.addTask(self.fetchTaskDummy(id));
-				bar.css('width', function(){
-					return (index+1)*100 / numberOfTasks + "%";
-				});
-			});
-		});
-		self.notification.children(".progress")
-			.removeClass("active")
-			.removeClass("progress-info")
-			.removeClass("progress-striped")
-			.addClass("progress-success");
-		self.notification.delay(2000).slideToggle();
+		self.fetchTaskIDs().then(function(data){TaskLister.taskListLoaded(data)})
+		                    .fail(function (){console.log("EIP");});
+	},
+
+	taskListLoaded: function(data) {
+	    console.log(data);
+	    if(typeof data === 'undefined' || typeof data.taskIds === 'undefined'){
+	        return;
+	    }
+	    console.log("got past");
+        var self = TaskLister;
+        self.idList = data.taskIds;
+	    self.notification.slideToggle();
+        var numberOfTasks = self.idList.length;
+        self.notification.children(".progress")
+            .addClass("active")
+            .addClass("progress-info")
+            .addClass("progress-striped")
+            .removeClass("progress-success");
+        var bar = self.notification.children(".progress").children(".bar");
+        $.each(self.idList, function(index, id){
+            bar.text("Loading tasks " + id + "/" + numberOfTasks);
+            self.fetchTask(id).then(function (taskData){
+                self.addTask(taskData);
+                bar.css('width', function(){
+                    return (index+1)*100 / numberOfTasks + "%";
+                });
+            }).fail(function(){
+                self.addTask(self.fetchTaskDummy(id));
+                bar.css('width', function(){
+                    return (index+1)*100 / numberOfTasks + "%";
+                });
+            });
+        });
+        self.notification.children(".progress")
+            .removeClass("active")
+            .removeClass("progress-info")
+            .removeClass("progress-striped")
+            .addClass("progress-success");
+        self.notification.delay(2000).slideToggle();
 	},
 
 	addTask: function(taskData){
@@ -248,5 +216,4 @@ var TaskLister = {
         });
         console.log(self.tasks[4]);
 	}
-
 };

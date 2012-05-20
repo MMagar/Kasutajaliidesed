@@ -1,9 +1,11 @@
 package ee.kanbanmini;
 
 import com.opensymphony.xwork2.Action;
-import org.apache.log4j.helpers.LogLog;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,6 +19,7 @@ public class Registration {
     private String authString;
     private String result;
     private Hibernate hibernate;
+    private List<Long> taskIds = new ArrayList<Long>();
 
     public Registration(){
         if(hibernate == null){
@@ -25,29 +28,53 @@ public class Registration {
     }
 
     public String register(){
-        System.out.println("Should reg" + email + " : " + authString);
-        User newUser = new User(email, authString);
-        try {
-            hibernate.registerUser(newUser);
-            result = "User registered!";
-        } catch (UserExists exception) {
+        System.out.println("Should reg " + email + " : " + authString);
+        Session session = hibernate.sessionFactory.openSession();
+
+        Query query = session.getNamedQuery("findUserByAuthAndEmail");
+        query.setString("email", email);
+        query.setString("auth", authString);
+        if(!query.list().isEmpty()){
             result = "Email already registered!";
+            session.close();
+            return Action.SUCCESS;
         }
+
+        User newUser = new User(email, authString);
+        session.beginTransaction();
+        session.save(newUser);
+        session.getTransaction().commit();
+        session.close();
+
+        result = "User registered!";
         return Action.SUCCESS;
     }
 
+
     public String login(){
-        User user = hibernate.logIn(email, authString);
-        if(user == null){
-            result = "Login failed";
-        } else {
+        Session session = hibernate.sessionFactory.openSession();
+        Query query = session.getNamedQuery("findUserByAuthAndEmail");
+        query.setString("email", email);
+        query.setString("auth", authString);
+        if(!query.list().isEmpty()) {
             result = "Login success";
+        } else {
+            result = "Login failed";
         }
+        session.close();
         return Action.SUCCESS;
     }
 
     public String getTasks(){
-        result = "{1,2}";
+        Session session = hibernate.sessionFactory.openSession();
+
+        Query query = session.getNamedQuery("findUserByAuth");
+        query.setString("auth", authString);
+        if(!query.list().isEmpty()){
+            User user = (User)query.list().get(0);
+            taskIds = user.getTaskIds();
+        }
+        session.close();
         return Action.SUCCESS;
     }
 
@@ -62,4 +89,9 @@ public class Registration {
     public String getResult() {
         return result;
     }
+
+    public List<Long> getTaskIds() {
+        return taskIds;
+    }
+
 }

@@ -1,6 +1,7 @@
 package ee.kanbanmini;
 
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -62,12 +63,10 @@ public class User {
         tasks.add(task);
     }
 
-    public long[] getTaskIds(){
-        long[] result = {};
-        int i = 0;
+    public ArrayList<Long> getTaskIds(){
+        ArrayList<Long> result = new ArrayList<Long>();
         for(Task task : tasks){
-            result[i] = task.getId();
-            i++;
+            result.add(task.getId());
         }
         return result;
     }

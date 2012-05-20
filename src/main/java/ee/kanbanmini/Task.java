@@ -63,7 +63,7 @@ public class Task implements Serializable {
         return importance;
     }
 
-    public void setImportance(int importance) {
+    public void setImportance(long importance) {
         this.importance = importance;
     }
 
@@ -87,7 +87,7 @@ public class Task implements Serializable {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(long status) {
         this.status = status;
     }
 }

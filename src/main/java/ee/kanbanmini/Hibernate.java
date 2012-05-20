@@ -19,20 +19,16 @@ public class Hibernate {
         sessionFactory = new Configuration().configure().buildSessionFactory();
     }
 
-    public long[] getTasIdsOfUser(){
-        return new long[]{1, 2, 3};
-    }
-
     public Task getTask(long id){
         Task result;
-        Session session = getSession();
+        Session session = sessionFactory.openSession();
         result = (Task)session.get(Task.class, id);
         session.close();
         return result;
     }
 
     public void updateTask(Task task){
-        Session session = getSession();
+        Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.update(task);
         session.getTransaction().commit();
@@ -43,7 +39,7 @@ public class Hibernate {
         if(findUser(user.getEmail()) != null){
             throw new UserExists();
         }
-        Session session = getSession();
+        Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.save(user);
         session.getTransaction().commit();
@@ -52,7 +48,7 @@ public class Hibernate {
 
     public User findUser(String email){
         User result = null;
-        Session session = getSession();
+        Session session = sessionFactory.openSession();
         Query query = session.getNamedQuery("findUserByEmail");
         query.setString("email", email);
         if(!query.list().isEmpty())
@@ -63,7 +59,7 @@ public class Hibernate {
 
     public User findUserByAuth(String auth){
         User result = null;
-        Session session = getSession();
+        Session session = sessionFactory.openSession();
         Query query = session.getNamedQuery("findUserByAuth");
         query.setString("auth", auth);
         if(!query.list().isEmpty())
@@ -73,7 +69,7 @@ public class Hibernate {
     }
 
     public void updateUser(User user) {
-        Session session = getSession();
+        Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.update(user);
         session.getTransaction().commit();
@@ -82,7 +78,7 @@ public class Hibernate {
 
     public User logIn(String email, String authorization){
         User result = null;
-        Session session = getSession();
+        Session session = sessionFactory.openSession();
         Query query = session.getNamedQuery("findUserByAuthAndEmail");
         query.setString("email", email);
         query.setString("auth", authorization);
@@ -90,13 +86,6 @@ public class Hibernate {
             result = (User)query.list().get(0);
         session.close();
         return result;
-    }
-
-    private Session getSession(){
-        if(sessionFactory.getCurrentSession().isOpen()){
-            return sessionFactory.openSession();
-        }
-        return sessionFactory.getCurrentSession();
     }
 
 }
