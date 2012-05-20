@@ -1,6 +1,9 @@
 package ee.kanbanmini;
 
 import com.opensymphony.xwork2.Action;
+import org.apache.log4j.helpers.LogLog;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 import java.util.*;
 
@@ -21,6 +24,7 @@ public class Tasks {
     private String description;
     private long status;
     private Task currentTask;
+    private String authString;
     private static Hibernate hibernate;
 
     public Tasks(){
@@ -29,14 +33,30 @@ public class Tasks {
         }
     }
 
-    public String execute() {
-        System.out.println("start2");
+    public String newTask() {
+        Session session = hibernate.sessionFactory.openSession();
+        Query query = session.getNamedQuery("findUserByAuth");
+        query.setString("auth", authString);
+        User user;
+        if(!query.list().isEmpty()) {
+            user = (User)query.list().get(0);
+        } else {
+            return Action.SUCCESS;
+        }
+        Task newTask = new Task(title, urgency, importance, deadline, description, status);
+        session.beginTransaction();
+        user.addTask(newTask);
+        session.save(user);
+        session.getTransaction().commit();
+        session.close();
+        currentTask = newTask;
+        return Action.SUCCESS;
+    }
+
+
+    public String getTask() {
         if(id > -1) {
             currentTask = hibernate.getTask(id);
-        } else if(id == SAVE) {
-            Task newTask = new Task(title, urgency, importance, deadline, description, status);
-            hibernate.saveTask(newTask);
-            currentTask = currentTask;
         }
         return Action.SUCCESS;
     }
@@ -111,4 +131,13 @@ public class Tasks {
             return currentTask.getStatus();
         else return -1;
     }
+
+    public String getAuthString() {
+        return authString;
+    }
+
+    public void setAuthString(String authString) {
+        this.authString = authString;
+    }
+
 }

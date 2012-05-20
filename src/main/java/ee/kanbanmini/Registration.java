@@ -3,6 +3,8 @@ package ee.kanbanmini;
 import com.opensymphony.xwork2.Action;
 import org.apache.log4j.helpers.LogLog;
 
+import java.util.Date;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Maks
@@ -22,33 +24,30 @@ public class Registration {
         }
     }
 
-    public String execute(){
-        LogLog.warn("WARN exec");
-        return Action.SUCCESS;
-    }
-
     public String register(){
-        LogLog.warn("WARN reg");
-
         System.out.println("Should reg" + email + " : " + authString);
         User newUser = new User(email, authString);
         try {
             hibernate.registerUser(newUser);
             result = "User registered!";
-        } catch (UserExists userExists) {
+        } catch (UserExists exception) {
             result = "Email already registered!";
         }
         return Action.SUCCESS;
     }
 
     public String login(){
-        LogLog.warn("WARN login");
         User user = hibernate.logIn(email, authString);
         if(user == null){
             result = "Login failed";
         } else {
             result = "Login success";
         }
+        return Action.SUCCESS;
+    }
+
+    public String getTasks(){
+        result = "{1,2}";
         return Action.SUCCESS;
     }
 

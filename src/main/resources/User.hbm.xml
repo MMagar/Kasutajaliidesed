@@ -9,7 +9,12 @@
         </id>
         <property name="email" column="email"/>
         <property name="authorizationString" column="authorizationString" />
+        <set name="tasks" table="user_task" cascade="all" fetch="join">
+            <key column="user_id"/>
+            <many-to-many column="task_id" class="ee.kanbanmini.Task"/>
+        </set>
     </class>
+
     <query name="findUserByEmail">
         <![CDATA[from User u where u.email = :email]]>
     </query>

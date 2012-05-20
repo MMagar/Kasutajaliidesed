@@ -1,5 +1,9 @@
 package ee.kanbanmini;
 
+
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Maks
@@ -11,6 +15,7 @@ public class User {
     private long id;
     private String email;
     private String authorizationString;
+    private Set<Task> tasks = new HashSet<Task>(0);
 
     public User(){
     }
@@ -18,6 +23,7 @@ public class User {
     public User(String email, String authorizationString) {
         this.email = email;
         this.authorizationString = authorizationString;
+
     }
 
     public long getId() {
@@ -42,5 +48,27 @@ public class User {
 
     public void setAuthorizationString(String authorizationString) {
         this.authorizationString = authorizationString;
+    }
+
+    public Set getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(Set<Task> tasks) {
+        this.tasks = tasks;
+    }
+
+    public void addTask(Task task){
+        tasks.add(task);
+    }
+
+    public long[] getTaskIds(){
+        long[] result = {};
+        int i = 0;
+        for(Task task : tasks){
+            result[i] = task.getId();
+            i++;
+        }
+        return result;
     }
 }

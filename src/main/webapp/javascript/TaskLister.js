@@ -190,7 +190,7 @@ var TaskLister = {
 	},
 
 	uploadNewTask: function(task){
-	    task.id = -2;
+	    task.authString = $.cookie("auth");
 	    console.log("uploading:")
 	    console.log(task);
 	    $.post('newtask', task, function(data){
