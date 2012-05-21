@@ -135,7 +135,7 @@ var TaskLister = {
 	drawTask: function(taskData) {
 		var self = TaskLister;
 		var taskHTML = self.taskItemTemplate(taskData);
-		$("#" + self.getStatusName(taskData.status)).append(taskHTML);
+		$("#" + self.getStatusName(taskData.status) + "List").append(taskHTML);
 	},
 
 	getStatusName: function(statusId){

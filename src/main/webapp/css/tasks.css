@@ -34,6 +34,14 @@
 	padding: 0.2em;
 }
 
+.taskListBody {
+    list-style-type: none;
+}
+
+.taskListBody li{
+    list-type: none;
+}
+
 .taskItem {
 	border-top: 1px solid #00DFFC;
 	border-bottom: 1px solid #005F6B;
@@ -50,7 +58,7 @@
 	padding: 0.2em;
 }
 
-.taskHeader:hover{ 
+.taskHeader:hover{
 	background-color: #00DFFC;
 	cursor: pointer;
 }

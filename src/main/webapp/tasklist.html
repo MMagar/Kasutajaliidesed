@@ -62,40 +62,36 @@
 	   <div class="row-fluid" >
 		<div class="span3">
 			<div class="taskList" id="backlog">
-				<div class="taskListHeader">
-					Backlog
-				</div>
-				<div class="taskListBody">
-				</div>
+				<div class="taskListHeader">Backlog</div>
+                <ul id="backlogList" class="taskListBody connectedSortable">
+
+                </ul>
 			</div>
 		</div>
 
 		<div class="span3">
 			<div class="taskList" id="development">
-				<div class="taskListHeader">
-					Development
-				</div>
-				<div class="taskListBody">
-				</div>
+				<div class="taskListHeader">Development</div>
+                <ul id="developmentList" class="taskListBody connectedSortable">
+
+                </ul>
 			</div>
 		</div>
 
 		<div class="span3">
 			<div class="taskList" id="testing">
-				<div class="taskListHeader">
-					Testing
-				</div>
-				<div class="taskListBody">
-				</div>
+				<div class="taskListHeader">Testing</div>
+                <ul id="testingList" class="taskListBody connectedSortable">
+
+                </ul>
 			</div>
 		</div>
 		<div class="span3">
 			<div class="taskList" id="done">
-				<div class="taskListHeader">
-					Done
-				</div>
-				<div class="taskListBody">
-				</div>
+				<div class="taskListHeader">Done</div>
+                <ul id="doneList" class="taskListBody connectedSortable">
+
+                </ul>
 			</div>
 		</div>
 	   </div>
@@ -197,6 +193,7 @@
     <script src="./javascript/bootstrap/bootstrap-button.js"></script>
 	<script src="./javascript/bootstrap/bootstrap-typeahead.js"></script>
     <script src="./javascript/jquery.cookie.js"></script>
+    <script src="./javascript/jqueryUI/jquery-ui-1.8.20.custom.min.js"></script>
 	
 	<script src="./javascript/handlebars/handlebars-1.0.0.beta.6.js"></script>
     <script src="./javascript/validations/validateRegForm.js"></script>
@@ -220,7 +217,10 @@
 		});
 
         console.log($.cookie('auth'));
+        $( "#backlogList, #developmentList, #testingList, #doneList" ).sortable({
+            connectWith: ".connectedSortable"
+        }).disableSelection();
 
 	</script>
-	
+
 </body></html>
